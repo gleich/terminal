@@ -1,0 +1,19 @@
+name: fsync
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+      - cron: '0 */1 * * *' # Run every hour
+
+jobs:
+  gh_fsync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      - name: Run gh_fsync
+        uses: Matt-Gleich/gh_fsync@master
