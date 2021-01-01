@@ -1,7 +1,7 @@
 release:
   github:
-    owner: github_username
-    name: 'project_name'
+    owner: Matt-Gleich
+    name: 'ssh_me'
   prerelease: auto
 before:
   hooks:

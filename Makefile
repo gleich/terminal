@@ -3,15 +3,15 @@
 ##########
 
 build-docker-prod:
-	docker build -f docker/Dockerfile -t docker_username/project_name:latest .
+	docker build -f docker/Dockerfile -t mattgleich/ssh_me:latest .
 build-docker-dev:
-	docker build -f docker/dev.Dockerfile -t docker_username/project_name:test .
+	docker build -f docker/dev.Dockerfile -t mattgleich/ssh_me:test .
 build-docker-dev-lint:
-	docker build -f docker/dev.lint.Dockerfile -t docker_username/project_name:lint .
+	docker build -f docker/dev.lint.Dockerfile -t mattgleich/ssh_me:lint .
 build-go:
 	go get -v -t -d ./...
 	go build -v .
-	rm project_name
+	rm ssh_me
 
 #########
 # Linting
@@ -30,7 +30,7 @@ lint-hadolint:
 	hadolint docker/dev.Dockerfile
 	hadolint docker/dev.lint.Dockerfile
 lint-in-docker: build-docker-dev-lint
-	docker run docker_username/project_name:lint
+	docker run mattgleich/ssh_me:lint
 
 #########
 # Testing
@@ -40,7 +40,7 @@ test-go:
 	go get -v -t -d ./...
 	go test -v ./...
 test-in-docker: build-docker-dev
-	docker run docker_username/project_name:test
+	docker run mattgleich/ssh_me:test
 
 ##########
 # Grouping
