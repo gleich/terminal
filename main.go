@@ -1,10 +1,8 @@
 package main
 
 import (
-	"io"
-	"log"
-
 	"github.com/Matt-Gleich/logoru"
+	"github.com/Matt-Gleich/ssh_me/pkg/messages"
 	"github.com/gliderlabs/ssh"
 )
 
@@ -13,8 +11,12 @@ func main() {
 
 	ssh.Handle(func(s ssh.Session) {
 		logoru.Info("Handling session")
-		io.WriteString(s, "Hello World!\n")
+
+		messages.FakeStep(s, "Hello world!")
 	})
 
-	log.Fatal(ssh.ListenAndServe(":2222", nil))
+	err := ssh.ListenAndServe(":2222", nil)
+	if err != nil {
+		logoru.Critical("Failed to start ssh server", err)
+	}
 }
