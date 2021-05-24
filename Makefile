@@ -12,7 +12,7 @@ build-go:
 	go get -v -t -d ./...
 	go build -v .
 	rm ssh_me
-run:
+run-dev:
 	python3 ./scripts/reset.py
 	go run main.go
 
