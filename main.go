@@ -12,7 +12,7 @@ func main() {
 	ssh.Handle(func(s ssh.Session) {
 		logoru.Info("Handling session")
 
-		messages.FakeStep(s, "Hello world!")
+		messages.OutputWelcome(s)
 	})
 
 	err := ssh.ListenAndServe(":2222", nil)
