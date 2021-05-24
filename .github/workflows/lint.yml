@@ -28,7 +28,7 @@ jobs:
       - name: Linting Dockerfile
         uses: brpaz/hadolint-action@master
         with:
-          dockerfile: "docker/Dockerfile"
+          dockerfile: "docker/prod.Dockerfile"
       - name: Linting dev.Dockerfile
         uses: brpaz/hadolint-action@master
         with:

@@ -3,7 +3,7 @@
 ##########
 
 build-docker-prod:
-	docker build -f docker/Dockerfile -t mattgleich/ssh_me:latest .
+	docker build -f docker/prod.Dockerfile -t mattgleich/ssh_me:latest .
 build-docker-dev:
 	docker build -f docker/dev.Dockerfile -t mattgleich/ssh_me:test .
 build-docker-dev-lint:
@@ -29,7 +29,7 @@ lint-gomod:
 lint-goreleaser:
 	goreleaser check
 lint-hadolint:
-	hadolint docker/Dockerfile
+	hadolint docker/prod.Dockerfile
 	hadolint docker/dev.Dockerfile
 	hadolint docker/dev.lint.Dockerfile
 lint-in-docker: build-docker-dev-lint
