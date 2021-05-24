@@ -17,8 +17,8 @@ func OutputWelcome(s ssh.Session) {
 ┴ ┴┴ ┴ ┴  ┴   └─┘┴─┘└─┘┴└─┘┴ ┴
 `))
 
-	runes := []rune("👋 Hello, welcome to my ssh server!\nThis server acts like a terminal but with the following commands:\n" + commands.HelpMessage)
-	for _, char := range runes {
+	message := "👋 Hello, welcome to my ssh server!\nThis server acts like a terminal but with the following commands:\n" + commands.HelpMessage
+	for _, char := range message {
 		fmt.Fprint(s, string(char))
 		time.Sleep(time.Millisecond * 20)
 	}
