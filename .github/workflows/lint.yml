@@ -21,16 +21,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
       - run: make lint-gomod
-  goreleaser:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-      - name: Run Check
-        uses: goreleaser/goreleaser-action@v2
-        with:
-          version: latest
-          args: check
   hadolint:
     runs-on: ubuntu-latest
     steps:
@@ -38,15 +28,15 @@ jobs:
       - name: Linting Dockerfile
         uses: brpaz/hadolint-action@master
         with:
-          dockerfile: 'docker/Dockerfile'
+          dockerfile: "docker/Dockerfile"
       - name: Linting dev.Dockerfile
         uses: brpaz/hadolint-action@master
         with:
-          dockerfile: 'docker/dev.Dockerfile'
+          dockerfile: "docker/dev.Dockerfile"
       - name: Linting dev.lint.Dockerfile
         uses: brpaz/hadolint-action@master
         with:
-          dockerfile: 'docker/dev.lint.Dockerfile'
+          dockerfile: "docker/dev.lint.Dockerfile"
   in-docker:
     runs-on: ubuntu-latest
     steps:
