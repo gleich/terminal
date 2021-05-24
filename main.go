@@ -18,7 +18,7 @@ func main() {
 		logoru.Info("Handling session")
 		messages.OutputWelcome(s)
 
-		terminal := term.NewTerminal(s, "λ ")
+		terminal := term.NewTerminal(s, color.GreenString("λ "))
 		for {
 			cmd, err := terminal.ReadLine()
 			if err != nil {
@@ -29,6 +29,7 @@ func main() {
 			case "help":
 				commands.RunHelp(s)
 			case "exit":
+				commands.RunExit(s)
 				return
 			default:
 				fmt.Fprintln(s, color.RedString("Please enter a valid command"))
