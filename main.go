@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/Matt-Gleich/logoru"
 	"github.com/Matt-Gleich/ssh_me/pkg/commands"
@@ -37,7 +38,7 @@ func main() {
 		}
 	})
 
-	err := ssh.ListenAndServe(":2222", nil)
+	err := ssh.ListenAndServe(os.Getenv("SSH_ME_PORT"), nil)
 	if err != nil {
 		logoru.Critical("Failed to start ssh server", err)
 	}
