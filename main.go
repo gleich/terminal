@@ -5,10 +5,10 @@ import (
 	"os"
 
 	"github.com/Matt-Gleich/logoru"
+	"github.com/Matt-Gleich/ssh_me/pkg/colors"
 	"github.com/Matt-Gleich/ssh_me/pkg/commands"
 	"github.com/Matt-Gleich/ssh_me/pkg/messages"
 	"github.com/gliderlabs/ssh"
-	"github.com/wayneashleyberry/truecolor/pkg/color"
 	"golang.org/x/term"
 )
 
@@ -19,7 +19,7 @@ func main() {
 		logoru.Info("Handling session")
 		messages.OutputWelcome(s)
 
-		terminal := term.NewTerminal(s, color.Color(0, 255, 0).Sprint("λ "))
+		terminal := term.NewTerminal(s, colors.Green.Sprint("λ "))
 		for {
 			cmd, err := terminal.ReadLine()
 			if err != nil {
@@ -33,7 +33,7 @@ func main() {
 				commands.RunExit(s)
 				return
 			default:
-				fmt.Fprintln(s, color.Color(255, 0, 0).Sprint("Please enter a valid command"))
+				fmt.Fprintln(s, colors.Red.Sprint("Please enter a valid command"))
 			}
 		}
 	})

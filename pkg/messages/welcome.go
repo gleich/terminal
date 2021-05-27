@@ -4,14 +4,14 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/Matt-Gleich/ssh_me/pkg/colors"
 	"github.com/Matt-Gleich/ssh_me/pkg/commands"
 	"github.com/gliderlabs/ssh"
-	"github.com/wayneashleyberry/truecolor/pkg/color"
 )
 
 // Output a welcome message to the user
 func OutputWelcome(s ssh.Session) {
-	fmt.Fprintln(s, color.Color(233, 39, 65).Sprint(`
+	fmt.Fprintln(s, colors.Red.Sprint(`
 ┌┬┐┌─┐┌┬┐┌┬┐  ┌─┐┬  ┌─┐┬┌─┐┬ ┬
 │││├─┤ │  │   │ ┬│  ├┤ ││  ├─┤
 ┴ ┴┴ ┴ ┴  ┴   └─┘┴─┘└─┘┴└─┘┴ ┴
