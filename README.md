@@ -7,7 +7,7 @@
 ![build](https://github.com/Matt-Gleich/ssh_me/workflows/build/badge.svg)
 ![test](https://github.com/Matt-Gleich/ssh_me/workflows/test/badge.svg)
 ![lint](https://github.com/Matt-Gleich/ssh_me/workflows/lint/badge.svg)
-![deploy](https://github.com/Matt-Gleich/ssh_me/workflows/lint/deploy.svg)
+![deploy](https://github.com/Matt-Gleich/ssh_me/workflows/deploy/badge.svg)
 
 ## 🙌 Contributing
 
