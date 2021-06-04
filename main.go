@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Matt-Gleich/logoru"
-	"github.com/Matt-Gleich/ssh_me/pkg/colors"
-	"github.com/Matt-Gleich/ssh_me/pkg/commands"
-	"github.com/Matt-Gleich/ssh_me/pkg/messages"
+	"github.com/gleich/logoru"
+	"github.com/gleich/ssh_me/pkg/colors"
+	"github.com/gleich/ssh_me/pkg/commands"
+	"github.com/gleich/ssh_me/pkg/messages"
 	"github.com/gliderlabs/ssh"
 	"golang.org/x/term"
 )
