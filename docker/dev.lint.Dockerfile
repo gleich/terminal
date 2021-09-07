@@ -1,4 +1,4 @@
-FROM golangci/golangci-lint:v1.38
+FROM golangci/golangci-lint:v1.42
 
 # Meta data
 LABEL maintainer="email@mattglei.ch"
