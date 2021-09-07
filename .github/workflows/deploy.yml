@@ -16,7 +16,7 @@ jobs:
       - name: Build & Push Image
         run: |
           echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u gleich --password-stdin
-          docker build -f docker/prod.Dockerfile -t ghcr.io/gleich/ssh_me .
-          docker push ghcr.io/gleich/ssh_me
+          docker build -f docker/prod.Dockerfile -t ghcr.io/gleich/ssh .
+          docker push ghcr.io/gleich/ssh
       - name: Deploy to Caprover
-        run: docker run caprover/cli-caprover:v2.1.1 caprover deploy --caproverUrl https://api.mattglei.ch --caproverPassword ${{ secrets.CAPROVER_PASSWORD }} --caproverApp ssh --imageName ghcr.io/gleich/ssh_me
+        run: docker run caprover/cli-caprover:v2.1.1 caprover deploy --caproverUrl https://api.mattglei.ch --caproverPassword ${{ secrets.CAPROVER_PASSWORD }} --caproverApp ssh --imageName ghcr.io/gleich/ssh

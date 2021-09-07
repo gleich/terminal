@@ -1,4 +1,4 @@
-module github.com/gleich/ssh_me
+module github.com/gleich/ssh
 
 go 1.15
 

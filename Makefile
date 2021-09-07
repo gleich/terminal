@@ -3,15 +3,15 @@
 ##########
 
 build-docker-prod:
-	docker build -f docker/prod.Dockerfile -t mattgleich/ssh_me:latest .
+	docker build -f docker/prod.Dockerfile -t mattgleich/ssh:latest .
 build-docker-dev:
-	docker build -f docker/dev.Dockerfile -t mattgleich/ssh_me:test .
+	docker build -f docker/dev.Dockerfile -t mattgleich/ssh:test .
 build-docker-dev-lint:
-	docker build -f docker/dev.lint.Dockerfile -t mattgleich/ssh_me:lint .
+	docker build -f docker/dev.lint.Dockerfile -t mattgleich/ssh:lint .
 build-go:
 	go get -v -t -d ./...
 	go build -v .
-	rm ssh_me
+	rm ssh
 run-dev:
 	python3 ./scripts/reset.py
 	SSH_ME_PORT=":2222" go run main.go
@@ -33,7 +33,7 @@ lint-hadolint:
 	hadolint docker/dev.Dockerfile
 	hadolint docker/dev.lint.Dockerfile
 lint-in-docker: build-docker-dev-lint
-	docker run mattgleich/ssh_me:lint
+	docker run mattgleich/ssh:lint
 
 #########
 # Testing
@@ -43,7 +43,7 @@ test-go:
 	go get -v -t -d ./...
 	go test -v ./...
 test-in-docker: build-docker-dev
-	docker run mattgleich/ssh_me:test
+	docker run mattgleich/ssh:test
 
 ##########
 # Grouping

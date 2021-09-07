@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/gleich/ssh_me/pkg/colors"
-	"github.com/gleich/ssh_me/pkg/commands"
+	"github.com/gleich/ssh/pkg/colors"
+	"github.com/gleich/ssh/pkg/commands"
 	"github.com/gliderlabs/ssh"
 )
 

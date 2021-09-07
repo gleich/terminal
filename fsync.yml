@@ -1,7 +1,7 @@
 commit_message: 🔄 Update file via sync
 replace:
   - before: project_name
-    after: ssh_me
+    after: ssh
   - before: project_description
     after: 👋 Meet me via ssh!
   - before: github_username
