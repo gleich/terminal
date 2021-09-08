@@ -20,6 +20,7 @@ func main() {
 		messages.OutputWelcome(s)
 
 		terminal := term.NewTerminal(s, colors.Green.Sprint("λ "))
+		consecutive_fails := 0
 		for {
 			cmd, err := terminal.ReadLine()
 			if err != nil {
@@ -32,13 +33,20 @@ func main() {
 			case "exit":
 				commands.RunExit(s)
 				return
+			case "turtles":
+				commands.RunTurtle(s)
 			default:
 				fmt.Fprintln(s, colors.Red.Sprint("Please enter a valid command"))
+				consecutive_fails++
+				if consecutive_fails > 10 {
+					fmt.Fprintln(s, colors.Red.Sprint("Pipe broke to prevent attack"))
+					break
+				}
 			}
 		}
 	})
 
-	err := ssh.ListenAndServe(os.Getenv("SSH_ME_PORT"), nil)
+	err := ssh.ListenAndServe(os.Getenv("GLEICH_SSH_PORT"), nil)
 	if err != nil {
 		logoru.Critical("Failed to start ssh server", err)
 	}
