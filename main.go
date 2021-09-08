@@ -20,6 +20,7 @@ func main() {
 	go func() {
 		http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprintf(w, web.HTML)
+			logoru.Success("Handled http request")
 		})
 
 		err := http.ListenAndServe(os.Getenv("GLEICH_SSH_HTTP_PORT"), nil)
