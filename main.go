@@ -2,18 +2,32 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 	"os"
 
 	"github.com/gleich/logoru"
 	"github.com/gleich/ssh/pkg/colors"
 	"github.com/gleich/ssh/pkg/commands"
 	"github.com/gleich/ssh/pkg/messages"
+	"github.com/gleich/ssh/pkg/web"
 	"github.com/gliderlabs/ssh"
 	"golang.org/x/term"
 )
 
 func main() {
 	logoru.Info("Started program")
+
+	go func() {
+		http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+			fmt.Fprintf(w, web.HTML)
+		})
+
+		err := http.ListenAndServe(os.Getenv("GLEICH_SSH_HTTP_PORT"), nil)
+		if err != nil {
+			logoru.Critical("Failed to start http server", err)
+		}
+		logoru.Info("Started http server")
+	}()
 
 	ssh.Handle(func(s ssh.Session) {
 		logoru.Info("Handling session")
@@ -50,4 +64,5 @@ func main() {
 	if err != nil {
 		logoru.Critical("Failed to start ssh server", err)
 	}
+	logoru.Info("Started ssh server")
 }

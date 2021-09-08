@@ -10,7 +10,7 @@ cmd = "python3 ./scripts/reset.py && go build -o tmp/ssh ."
 # Binary file yields from `cmd`.
 bin = "tmp/ssh"
 # Customize binary.
-full_bin = "APP_ENV=dev APP_USER=air GLEICH_SSH_PORT=:2222 ./tmp/ssh"
+full_bin = "APP_ENV=dev APP_USER=air GLEICH_SSH_PORT=:2222 GLEICH_SSH_HTTP_PORT=:5000 ./tmp/ssh"
 # Watch these filename extensions.
 include_ext = ["go", "tpl", "tmpl", "html"]
 # Ignore these filename extensions or directories.
