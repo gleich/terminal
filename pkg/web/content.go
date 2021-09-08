@@ -31,12 +31,21 @@ const HTML = `<!DOCTYPE html>
     h2 {
       font-family: 'Victor Mono';
     }
+
+    .dollar {
+      color: #3ec840;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
   </style>
   <body>
     <h1 class="msg">In your terminal emulator of choice:</h1>
     <h2>
-      <span style="color: #3ec840">$</span>
-      <span style="font-weight: 900; text-decoration: white underline"
+      <span class="dollar">$&nbsp;</span><span style="font-weight: 900; text-decoration: white underline"
         >ssh ssh.mattglei.ch</span
       >
     </h2>
