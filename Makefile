@@ -12,9 +12,6 @@ build-go:
 	go get -v -t -d ./...
 	go build -v .
 	rm ssh
-run-dev:
-	python3 ./scripts/reset.py
-	SSH_ME_PORT=":2222" go run main.go
 
 #########
 # Linting
