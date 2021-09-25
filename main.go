@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/gleich/logoru"
+	"github.com/gleich/lumber/v2"
 	"github.com/gleich/ssh/pkg/colors"
 	"github.com/gleich/ssh/pkg/commands"
 	"github.com/gleich/ssh/pkg/messages"
@@ -15,23 +15,23 @@ import (
 )
 
 func main() {
-	logoru.Info("Started program")
+	lumber.Info("Started program")
 
 	go func() {
 		http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprintf(w, web.HTML)
-			logoru.Success("Handled http request")
+			lumber.Success("Handled http request")
 		})
 
 		err := http.ListenAndServe(os.Getenv("GLEICH_SSH_HTTP_PORT"), nil)
 		if err != nil {
-			logoru.Critical("Failed to start http server", err)
+			lumber.Fatal(err, "Failed to start http server")
 		}
-		logoru.Info("Started http server")
+		lumber.Info("Started http server")
 	}()
 
 	ssh.Handle(func(s ssh.Session) {
-		logoru.Info("Handling session")
+		lumber.Info("Handling session")
 		messages.OutputWelcome(s)
 
 		terminal := term.NewTerminal(s, colors.Green.Sprint("λ "))
@@ -39,7 +39,7 @@ func main() {
 		for {
 			cmd, err := terminal.ReadLine()
 			if err != nil {
-				logoru.Error("Failed to process new command", err)
+				lumber.Error(err, "Failed to process new command")
 			}
 
 			switch cmd {
@@ -63,7 +63,7 @@ func main() {
 
 	err := ssh.ListenAndServe(os.Getenv("GLEICH_SSH_PORT"), nil)
 	if err != nil {
-		logoru.Critical("Failed to start ssh server", err)
+		lumber.Fatal(err, "Failed to start ssh server")
 	}
-	logoru.Info("Started ssh server")
+	lumber.Info("Started ssh server")
 }
