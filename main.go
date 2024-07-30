@@ -1,9 +1,16 @@
 package main
 
 import (
-	"github.com/gleich/lumber/v2"
+	"io"
+	"log"
+
+	"github.com/gliderlabs/ssh"
 )
 
 func main() {
-	lumber.Info("hello world")
+	ssh.Handle(func(s ssh.Session) {
+		io.WriteString(s, "Hello world\n")
+	})
+
+	log.Fatal(ssh.ListenAndServe(":22", nil))
 }
