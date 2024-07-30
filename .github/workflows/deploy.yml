@@ -1,0 +1,22 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  caprover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          echo ${{ secrets.GHCR_TOKEN }} | docker login ghcr.io -u gleich --password-stdin
+          docker build -t ghcr.io/gleich/lcp-v2 .
+          docker push ghcr.io/gleich/lcp-v2
+      - uses: caprover/deploy-from-github@v1.1.2
+        with:
+          server: https://dev.mattglei.ch
+          app: lcp
+          token: '${{ secrets.CAPROVER_APP_TOKEN }}'
+          image: ghcr.io/gleich/lcp-v2
