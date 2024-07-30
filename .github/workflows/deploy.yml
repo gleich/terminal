@@ -12,11 +12,11 @@ jobs:
       - uses: actions/checkout@v4
       - run: |
           echo ${{ secrets.GHCR_TOKEN }} | docker login ghcr.io -u gleich --password-stdin
-          docker build -t ghcr.io/gleich/lcp-v2 .
-          docker push ghcr.io/gleich/lcp-v2
+          docker build -t ghcr.io/gleich/ssh .
+          docker push ghcr.io/gleich/ssh
       - uses: caprover/deploy-from-github@v1.1.2
         with:
           server: https://dev.mattglei.ch
-          app: lcp
+          app: ssh
           token: '${{ secrets.CAPROVER_APP_TOKEN }}'
-          image: ghcr.io/gleich/lcp-v2
+          image: ghcr.io/gleich/ssh
