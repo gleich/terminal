@@ -16,10 +16,10 @@ func Workouts(s ssh.Session) {
 	}
 
 	fmt.Fprintln(s)
-	fmt.Fprintln(s, "Here are my 3 most recent workouts from Strava. Last updated "+util.RenderExactFromNow(response.Updated))
+	fmt.Fprintf(s, "Here are my 3 most recent workouts from Strava. Last updated %s from https://mattglei.ch/lcp.\n", util.RenderExactFromNow(response.Updated))
 	fmt.Fprintln(s)
 	for i, a := range response.Data[:3] {
-		fmt.Fprintf(s, "#%d: %s %s\n", i+1, format.UnderlinedBold(a.Name), format.Grey.Sprint("["+util.RenderExactFromNow(a.StartDate)+"]"))
+		fmt.Fprintf(s, "#%d: %s %s\n", i+1, format.UnderlinedBold(format.Blue.Sprint(a.Name)), format.Grey.Sprint("["+util.RenderExactFromNow(a.StartDate)+"]"))
 		fmt.Fprintln(s)
 		fmt.Fprintf(s, "\tDistance: %.2f mi [%.2f km]\n", a.Distance*0.000621371, a.Distance*0.001)
 		fmt.Fprintf(s, "\tAverage heart rate: %.2f bpm\n", a.AverageHeartrate)
