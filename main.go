@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 
 	"github.com/gleich/lumber/v2"
+	"github.com/gleich/ssh/internal/cmds"
 	"github.com/gleich/ssh/internal/colors"
 	"github.com/gleich/ssh/internal/util"
 	"github.com/gliderlabs/ssh"
@@ -54,6 +55,8 @@ func startSSH() {
 			case "":
 			case "exit":
 				return
+			case "help":
+				cmds.Help(s)
 			default:
 				fmt.Fprintf(s, "\nInvalid command '%s'.\n\n", cmd)
 				consecutiveFails++
