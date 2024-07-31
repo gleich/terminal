@@ -4,7 +4,7 @@ FROM golang:1.22.5 AS build
 WORKDIR /src
 COPY . .
 
-RUN CGO_ENABLED=0 GOOS=linux go build -o /bin/terminal ./main.go
+RUN CGO_ENABLED=0 GOOS=linux go build -o /bin/terminal ./cmd/terminal.go
 
 FROM alpine:3.20.2
 
