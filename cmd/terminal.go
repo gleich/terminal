@@ -42,6 +42,7 @@ func startSSH() {
 	ssh.Handle(func(s ssh.Session) {
 		lumber.Info("handling connection from", s.RemoteAddr().String(), "["+s.User()+"]")
 
+		fmt.Fprintln(s)
 		var (
 			border      = "-----------------------------------------------"
 			borderSpeed = 15 * time.Millisecond

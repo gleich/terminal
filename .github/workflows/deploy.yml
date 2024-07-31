@@ -19,4 +19,4 @@ jobs:
           server: https://dev.mattglei.ch
           app: terminal
           token: '${{ secrets.CAPROVER_APP_TOKEN }}'
-          image: ghcr.io/gleich/ssh
+          image: ghcr.io/gleich/terminal
