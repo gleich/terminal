@@ -2,33 +2,40 @@ package util
 
 import (
 	"fmt"
-	"math"
 	"time"
 )
 
 func RenderExactFromNow(date time.Time) string {
 	currentTime := time.Now()
+	duration := currentTime.Sub(date)
 
-	yearsDiff := math.Abs(float64(date.Year() - currentTime.Year()))
-	monthsDiff := math.Abs(float64(int(date.Month())-int(currentTime.Month()))) - yearsDiff*12
-	daysDiff := math.Abs(float64(date.Day() - currentTime.Day()))
-	hoursDiff := math.Abs(float64(date.Hour() - currentTime.Hour()))
-	minutesDiff := math.Abs(float64(date.Minute() - currentTime.Minute()))
-	secondsDiff := math.Abs(float64(date.Second() - currentTime.Second()))
+	totalSeconds := int(duration.Seconds())
+	totalMinutes := totalSeconds / 60
+	totalHours := totalMinutes / 60
+	totalDays := totalHours / 24
+	totalMonths := totalDays / 30
+	totalYears := totalMonths / 12
+
+	yearsDiff := totalYears
+	monthsDiff := totalMonths % 12
+	daysDiff := totalDays % 30
+	hoursDiff := totalHours % 24
+	minutesDiff := totalMinutes % 60
+	secondsDiff := totalSeconds % 60
 	var fromNow string
 
 	if yearsDiff > 0 {
-		fromNow = fmt.Sprintf("%.0f %s & %.0f %s", yearsDiff, pluralize(int(yearsDiff), "year"), monthsDiff, pluralize(int(monthsDiff), "month"))
+		fromNow = fmt.Sprintf("%d %s & %d %s", yearsDiff, pluralize(yearsDiff, "year"), monthsDiff, pluralize(monthsDiff, "month"))
 	} else if monthsDiff > 0 {
-		fromNow = fmt.Sprintf("%.0f %s & %.0f %s", monthsDiff, pluralize(int(monthsDiff), "month"), daysDiff, pluralize(int(daysDiff), "day"))
+		fromNow = fmt.Sprintf("%d %s & %d %s", monthsDiff, pluralize(monthsDiff, "month"), daysDiff, pluralize(daysDiff, "day"))
 	} else if daysDiff > 0 {
-		fromNow = fmt.Sprintf("%.0f %s & %.0f%s", daysDiff, pluralize(int(daysDiff), "day"), hoursDiff, "h")
+		fromNow = fmt.Sprintf("%d %s & %dh", daysDiff, pluralize(daysDiff, "day"), hoursDiff)
 	} else if hoursDiff > 0 {
-		fromNow = fmt.Sprintf("%.0f%s & %.0f%s", hoursDiff, "h", minutesDiff, "m")
+		fromNow = fmt.Sprintf("%dh & %dm", hoursDiff, minutesDiff)
 	} else if minutesDiff > 0 {
-		fromNow = fmt.Sprintf("%.0f%s & %.0f%s", minutesDiff, "m", secondsDiff, "s")
+		fromNow = fmt.Sprintf("%dm & %ds", minutesDiff, secondsDiff)
 	} else {
-		fromNow = fmt.Sprintf("%.0f%s", secondsDiff, "s")
+		fromNow = fmt.Sprintf("%ds", secondsDiff)
 	}
 
 	return fromNow + " ago"
