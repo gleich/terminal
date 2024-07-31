@@ -42,11 +42,15 @@ func startSSH() {
 	ssh.Handle(func(s ssh.Session) {
 		lumber.Info("handling connection from", s.RemoteAddr().String(), "["+s.User()+"]")
 
-		welcome := format.Green.Sprint("\nWelcome to Matt Gleich's personal terminal! Enter `help` to available commands.\n\n")
-		for _, c := range welcome {
-			fmt.Fprint(s, string(c))
-			time.Sleep(30 * time.Millisecond)
-		}
+		var (
+			border      = "-----------------------------------------------"
+			borderSpeed = 15 * time.Millisecond
+		)
+		format.OutputTypewriter(s, borderSpeed, border)
+		format.OutputTypewriter(s, 70*time.Millisecond, "CONNECTION SUCCESSFULLY ESTABLISHED TO TERMINAL")
+		format.OutputTypewriter(s, borderSpeed, border)
+
+		fmt.Fprintln(s, format.Green.Sprint("\nWelcome to my personal terminal! Enter `help` to available commands.\n"))
 
 		terminal := term.NewTerminal(s, format.Green.Sprint("λ "))
 		consecutiveFails := 0
