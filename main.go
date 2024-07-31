@@ -6,16 +6,22 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"time"
 
 	"github.com/gleich/lumber/v2"
 	"github.com/gleich/ssh/internal/cmds"
-	"github.com/gleich/ssh/internal/colors"
-	"github.com/gleich/ssh/internal/util"
+	"github.com/gleich/ssh/internal/format"
 	"github.com/gliderlabs/ssh"
+	"github.com/joho/godotenv"
 	"golang.org/x/term"
 )
 
 func main() {
+	err := godotenv.Load()
+	if err != nil {
+		lumber.Fatal(err, "loading .env failed")
+	}
+
 	go startHTTP()
 	startSSH()
 }
@@ -37,9 +43,13 @@ func startSSH() {
 	ssh.Handle(func(s ssh.Session) {
 		lumber.Info("handling connection from", s.RemoteAddr().String())
 
-		util.WriteToConnection(s, colors.Green.Sprint("Welcome to Matt Gleich's personal terminal! Enter `help` to available commands.\n"))
+		welcome := format.Green.Sprint("Welcome to Matt Gleich's personal terminal! Enter `help` to available commands.\n\n")
+		for _, c := range welcome {
+			fmt.Fprint(s, string(c))
+			time.Sleep(30 * time.Millisecond)
+		}
 
-		terminal := term.NewTerminal(s, colors.Green.Sprint("λ "))
+		terminal := term.NewTerminal(s, format.Green.Sprint("λ "))
 		consecutiveFails := 0
 		for {
 			cmd, err := terminal.ReadLine()
@@ -57,6 +67,8 @@ func startSSH() {
 				return
 			case "help":
 				cmds.Help(s)
+			case "workouts":
+				cmds.Workouts(s)
 			default:
 				fmt.Fprintf(s, "\nInvalid command '%s'.\n\n", cmd)
 				consecutiveFails++

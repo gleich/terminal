@@ -3,7 +3,7 @@ module github.com/gleich/ssh
 go 1.22.5
 
 require (
-	github.com/fatih/color v1.17.0 // indirect
+	github.com/fatih/color v1.17.0
 	github.com/gleich/lumber/v2 v2.2.2
 	github.com/wayneashleyberry/truecolor v1.0.1
 	golang.org/x/sys v0.22.0 // indirect
@@ -11,6 +11,7 @@ require (
 
 require (
 	github.com/gliderlabs/ssh v0.3.7
+	github.com/joho/godotenv v1.5.1
 	golang.org/x/term v0.22.0
 )
 
