@@ -73,7 +73,7 @@ func startSSH() {
 				fmt.Fprintf(s, "\nInvalid command '%s'.\n\n", cmd)
 				consecutiveFails++
 				if consecutiveFails > 10 {
-					break
+					return
 				}
 			}
 		}
