@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"github.com/gleich/lumber/v2"
-	"github.com/gleich/ssh/internal/cmds"
-	"github.com/gleich/ssh/internal/format"
+	"github.com/gleich/terminal/internal/cmds"
+	"github.com/gleich/terminal/internal/format"
 	"github.com/gliderlabs/ssh"
 	"github.com/joho/godotenv"
 	"golang.org/x/term"
@@ -28,7 +28,7 @@ func main() {
 
 func startHTTP() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		http.Redirect(w, r, "https://github.com/gleich/ssh", http.StatusTemporaryRedirect)
+		http.Redirect(w, r, "https://github.com/gleich/terminal", http.StatusTemporaryRedirect)
 		lumber.Success("handled http redirect to github repo")
 	})
 

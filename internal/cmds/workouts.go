@@ -3,9 +3,9 @@ package cmds
 import (
 	"fmt"
 
-	"github.com/gleich/ssh/internal/format"
-	"github.com/gleich/ssh/internal/lcp"
-	"github.com/gleich/ssh/internal/util"
+	"github.com/gleich/terminal/internal/format"
+	"github.com/gleich/terminal/internal/lcp"
+	"github.com/gleich/terminal/internal/util"
 	"github.com/gliderlabs/ssh"
 )
 

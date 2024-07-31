@@ -1,4 +1,4 @@
-module github.com/gleich/ssh
+module github.com/gleich/terminal
 
 go 1.22.5
 
