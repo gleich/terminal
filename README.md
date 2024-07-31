@@ -1,3 +1,3 @@
 # terminal
 
-Terminal version of my website
+terminal version of my [website](https://mattglei.ch).
