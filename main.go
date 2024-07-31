@@ -43,6 +43,7 @@ func startSSH() {
 	ssh.Handle(func(s ssh.Session) {
 		lumber.Info("handling connection from", s.RemoteAddr().String(), "["+s.User()+"]")
 
+		fmt.Fprintln(s)
 		welcome := format.Green.Sprint("Welcome to Matt Gleich's personal terminal! Enter `help` to available commands.\n\n")
 		for _, c := range welcome {
 			fmt.Fprint(s, string(c))
