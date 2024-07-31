@@ -5,11 +5,14 @@ go 1.22.5
 require (
 	github.com/fatih/color v1.17.0 // indirect
 	github.com/gleich/lumber/v2 v2.2.2
-	github.com/wayneashleyberry/truecolor v1.0.1 // indirect
+	github.com/wayneashleyberry/truecolor v1.0.1
 	golang.org/x/sys v0.22.0 // indirect
 )
 
-require github.com/gliderlabs/ssh v0.3.7
+require (
+	github.com/gliderlabs/ssh v0.3.7
+	golang.org/x/term v0.22.0
+)
 
 require (
 	github.com/anmitsu/go-shlex v0.0.0-20200514113438-38f4b401e2be // indirect

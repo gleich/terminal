@@ -1,5 +1,6 @@
 # air
 tmp/
+bin/
 
 # goreleaser
 dist/
