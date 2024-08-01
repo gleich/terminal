@@ -1,4 +1,4 @@
-package format
+package output
 
 import "github.com/fatih/color"
 
