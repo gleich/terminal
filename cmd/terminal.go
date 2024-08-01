@@ -46,7 +46,7 @@ func startSSH() {
 		colors := output.NewColors(out.ColorProfile())
 
 		fmt.Fprintln(s)
-		output.Typewriter(s, 70*time.Millisecond, out.String("CONNECTION SUCCESSFULLY ESTABLISHED TO TERMINAL").Bold().Underline().String())
+		output.Typewriter(s, 50*time.Millisecond, out.String("CONNECTION SUCCESSFULLY ESTABLISHED TO TERMINAL").Bold().Underline().String())
 		output.Typewriter(s, 30*time.Millisecond, out.String("\nWelcome to my personal terminal! Enter `help` to available commands.\n").Foreground(colors.Green).String())
 
 		prefix := out.String("λ ").Foreground(colors.Green)
