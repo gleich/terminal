@@ -3,10 +3,10 @@ package cmds
 import (
 	"fmt"
 
+	"github.com/charmbracelet/ssh"
 	"github.com/gleich/terminal/internal/lcp"
 	"github.com/gleich/terminal/internal/output"
 	"github.com/gleich/terminal/internal/util"
-	"github.com/gliderlabs/ssh"
 	"github.com/muesli/termenv"
 )
 

@@ -3,7 +3,7 @@ package cmds
 import (
 	"fmt"
 
-	"github.com/gliderlabs/ssh"
+	"github.com/charmbracelet/ssh"
 )
 
 func Help(s ssh.Session) {

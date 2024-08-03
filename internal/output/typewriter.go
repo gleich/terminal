@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/gliderlabs/ssh"
+	"github.com/charmbracelet/ssh"
 )
 
 func Typewriter(s ssh.Session, speed time.Duration, msg string) {

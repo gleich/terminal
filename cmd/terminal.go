@@ -1,17 +1,22 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"io"
+	"net"
 	"net/http"
 	"os"
 	"path/filepath"
 	"time"
 
+	"github.com/charmbracelet/ssh"
+	"github.com/charmbracelet/wish"
+	"github.com/charmbracelet/wish/activeterm"
+	"github.com/charmbracelet/wish/logging"
 	"github.com/gleich/lumber/v2"
 	"github.com/gleich/terminal/internal/cmds"
 	"github.com/gleich/terminal/internal/output"
-	"github.com/gliderlabs/ssh"
 	"github.com/joho/godotenv"
 	"golang.org/x/term"
 )
@@ -39,57 +44,64 @@ func startHTTP() {
 }
 
 func startSSH() {
-	ssh.Handle(func(s ssh.Session) {
-		lumber.Info("handling connection from", s.RemoteAddr().String(), "["+s.User()+"]")
-
-		out := output.OutputFromSession(s)
-		colors := output.NewColors(out.ColorProfile())
-
-		fmt.Fprintln(s)
-		output.Typewriter(s, 50*time.Millisecond, out.String("CONNECTION SUCCESSFULLY ESTABLISHED TO TERMINAL").Bold().Underline().String())
-		output.Typewriter(s, 30*time.Millisecond, out.String("\nWelcome to my personal terminal! Enter `help` to available commands.\n").Foreground(colors.Green).String())
-
-		prefix := out.String("λ ").Foreground(colors.Green)
-		terminal := term.NewTerminal(s, prefix.String())
-		consecutiveFails := 0
-		for {
-			cmd, err := terminal.ReadLine()
-			if err == io.EOF {
-				fmt.Fprintln(s)
-				return
-			}
-			if err != nil {
-				fmt.Println(err.Error())
-				lumber.Error(err, "processing new command failed")
-			}
-			switch cmd {
-			case "":
-			case "exit":
-				return
-			case "help":
-				cmds.Help(s)
-			case "workouts":
-				cmds.Workouts(s, out, colors)
-			case "clear":
-				out.ClearScreen()
-			default:
-				fmt.Fprintf(s, "\nInvalid command '%s'.\n\n", cmd)
-				consecutiveFails++
-				if consecutiveFails > 10 {
-					return
-				}
-			}
-		}
-	})
-
 	homedir, err := os.UserHomeDir()
 	if err != nil {
 		lumber.Fatal(err, "getting home directory failed")
 	}
 
-	lumber.Info("starting ssh server")
-	err = ssh.ListenAndServe(":22", nil, ssh.HostKeyFile(filepath.Join(homedir, ".ssh", "id_rsa")))
+	srv, err := wish.NewServer(
+		wish.WithAddress(net.JoinHostPort("localhost", os.Getenv("SSH_PORT"))),
+		wish.WithHostKeyPath(filepath.Join(homedir, ".ssh", "id_rsa")),
+		wish.WithMiddleware(func(next ssh.Handler) ssh.Handler {
+			return func(s ssh.Session) {
+				out := output.OutputFromSession(s)
+				colors := output.NewColors(out.ColorProfile())
+
+				fmt.Fprintln(s)
+				output.Typewriter(s, 50*time.Millisecond, out.String("CONNECTION SUCCESSFULLY ESTABLISHED TO TERMINAL").Bold().Underline().String())
+				output.Typewriter(s, 30*time.Millisecond, out.String("\nWelcome to my personal terminal! Enter `help` to available commands.\n").Foreground(colors.Green).String())
+
+				prefix := out.String("λ ").Foreground(colors.Green)
+				terminal := term.NewTerminal(s, prefix.String())
+				consecutiveFails := 0
+				for {
+					cmd, err := terminal.ReadLine()
+					if err == io.EOF {
+						fmt.Fprintln(s)
+						return
+					}
+					if err != nil {
+						fmt.Println(err.Error())
+						lumber.Error(err, "processing new command failed")
+					}
+					switch cmd {
+					case "":
+					case "exit":
+						return
+					case "help":
+						cmds.Help(s)
+					case "workouts":
+						cmds.Workouts(s, out, colors)
+					case "clear":
+						out.ClearScreen()
+					default:
+						fmt.Fprintf(s, "\nInvalid command '%s'.\n\n", cmd)
+						consecutiveFails++
+						if consecutiveFails > 10 {
+							return
+						}
+					}
+				}
+			}
+		},
+			logging.Middleware(), activeterm.Middleware()),
+	)
 	if err != nil {
+		lumber.Fatal(err, "creating server failed")
+	}
+
+	lumber.Info("starting ssh server")
+	if err = srv.ListenAndServe(); err != nil && !errors.Is(err, ssh.ErrServerClosed) {
 		lumber.Fatal(err, "starting server failed")
 	}
 }
