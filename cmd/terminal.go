@@ -50,7 +50,7 @@ func startSSH() {
 	}
 
 	srv, err := wish.NewServer(
-		wish.WithAddress(net.JoinHostPort("localhost", os.Getenv("SSH_PORT"))),
+		wish.WithAddress(net.JoinHostPort("0.0.0.0", "22")),
 		wish.WithHostKeyPath(filepath.Join(homedir, ".ssh", "id_rsa")),
 		wish.WithMiddleware(func(next ssh.Handler) ssh.Handler {
 			return func(s ssh.Session) {
