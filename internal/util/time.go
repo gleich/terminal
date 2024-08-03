@@ -25,7 +25,13 @@ func RenderExactFromNow(date time.Time) string {
 	var fromNow string
 
 	if yearsDiff > 0 {
-		fromNow = fmt.Sprintf("%d %s & %d %s", yearsDiff, pluralize(yearsDiff, "year"), monthsDiff, pluralize(monthsDiff, "month"))
+		fromNow = fmt.Sprintf(
+			"%d %s & %d %s",
+			yearsDiff,
+			pluralize(yearsDiff, "year"),
+			monthsDiff,
+			pluralize(monthsDiff, "month"),
+		)
 	} else if monthsDiff > 0 {
 		fromNow = fmt.Sprintf("%d %s & %d %s", monthsDiff, pluralize(monthsDiff, "month"), daysDiff, pluralize(daysDiff, "day"))
 	} else if daysDiff > 0 {
