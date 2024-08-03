@@ -3,6 +3,8 @@ package cmds
 import (
 	"fmt"
 
+	"github.com/charmbracelet/lipgloss"
+	"github.com/charmbracelet/lipgloss/table"
 	"github.com/charmbracelet/ssh"
 	"github.com/gleich/terminal/internal/lcp"
 	"github.com/gleich/terminal/internal/output"
@@ -23,7 +25,25 @@ func Workouts(s ssh.Session, out *termenv.Output, colors output.Colors) {
 		util.RenderExactFromNow(response.Updated),
 	)
 	fmt.Fprintln(s)
-	for i, a := range response.Data[:3] {
+
+	for i, a := range response.Data {
+		t := table.New()
+		t.Border(lipgloss.NormalBorder())
+		t.BorderRow(true)
+		t.Row(
+			out.String(" DISTANCE ").Foreground(colors.Green).Bold().String(),
+			fmt.Sprintf(" %.2f mi [%.2f km]", a.Distance*0.000621371, a.Distance*0.001),
+		)
+		t.Row(
+			out.String(" AVERAGE HR ").Foreground(colors.Green).Bold().String(),
+			fmt.Sprintf(" %.2f bpm", a.AverageHeartrate),
+		)
+		t.Row(
+			out.String(" STRAVA LINK ").Foreground(colors.Green).Bold().String(),
+			" "+out.String(fmt.Sprintf("https://strava.com/activities/%d", a.ID)).
+				Underline().
+				String()+" ",
+		)
 		fmt.Fprintf(
 			s,
 			"#%d: %s %s\n",
@@ -31,10 +51,7 @@ func Workouts(s ssh.Session, out *termenv.Output, colors output.Colors) {
 			out.String(a.Name).Foreground(colors.Blue).Bold().Underline(),
 			out.String("["+util.RenderExactFromNow(a.StartDate)+"]").Foreground(colors.Grey),
 		)
-		fmt.Fprintln(s)
-		fmt.Fprintf(s, "\tDistance: %.2f mi [%.2f km]\n", a.Distance*0.000621371, a.Distance*0.001)
-		fmt.Fprintf(s, "\tAverage heart rate: %.2f bpm\n", a.AverageHeartrate)
-		fmt.Fprintf(s, "\tStrava activity: https://strava.com/activities/%d\n", a.ID)
+		fmt.Fprintln(s, t.Render())
 		fmt.Fprintln(s)
 	}
 }
