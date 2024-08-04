@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"time"
 
 	"github.com/charmbracelet/ssh"
 	"github.com/charmbracelet/wish"
@@ -21,7 +22,15 @@ import (
 )
 
 func main() {
-	err := godotenv.Load()
+	logger := lumber.NewCustomLogger()
+	nytime, err := time.LoadLocation("America/New_York")
+	if err != nil {
+		lumber.Fatal(err, "failed to load new york timezone")
+	}
+	logger.Timezone = nytime
+	lumber.SetLogger(logger)
+
+	err = godotenv.Load()
 	if err != nil {
 		lumber.Fatal(err, "loading .env failed")
 	}

@@ -4,9 +4,9 @@ go 1.22.5
 
 require (
 	github.com/fatih/color v1.17.0
-	github.com/gleich/lumber/v2 v2.2.2
+	github.com/gleich/lumber/v2 v2.3.0
 	github.com/wayneashleyberry/truecolor v1.0.1 // indirect
-	golang.org/x/sys v0.22.0 // indirect
+	golang.org/x/sys v0.23.0 // indirect
 )
 
 require (
@@ -46,6 +46,6 @@ require (
 	github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e // indirect
 	golang.org/x/crypto v0.25.0 // indirect
 	golang.org/x/exp v0.0.0-20240719175910-8a7402abbf56 // indirect
-	golang.org/x/sync v0.7.0 // indirect
+	golang.org/x/sync v0.8.0 // indirect
 	golang.org/x/text v0.16.0 // indirect
 )
