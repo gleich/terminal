@@ -8,7 +8,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o /bin/terminal ./cmd/terminal.go
 
 FROM alpine:3.20.2
 
-RUN apk add --no-cache ca-certificates=20240705-r0
+RUN apk update && apk add --no-cache ca-certificates=20240705-r0 tzdata=2024a-r1
 
 WORKDIR /src
 COPY --from=build /bin/terminal /bin/terminal
