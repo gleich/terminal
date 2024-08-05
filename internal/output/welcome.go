@@ -21,7 +21,7 @@ func Welcome(s ssh.Session, out *termenv.Output, colors Colors) {
 	Typewriter(
 		s,
 		30*time.Millisecond,
-		out.String("\nWelcome to my personal terminal! Enter `help` to available commands.\n").
+		out.String("\nWelcome to Matt Gleich's terminal. Enter `help` to see available commands.\n").
 			Foreground(colors.Green).
 			String(),
 	)
