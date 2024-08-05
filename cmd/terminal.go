@@ -22,6 +22,18 @@ import (
 )
 
 func main() {
+	setupLogger()
+
+	err := godotenv.Load()
+	if err != nil {
+		lumber.Fatal(err, "loading .env failed")
+	}
+
+	go startHTTP()
+	startSSH()
+}
+
+func setupLogger() {
 	logger := lumber.NewCustomLogger()
 	nytime, err := time.LoadLocation("America/New_York")
 	if err != nil {
@@ -29,14 +41,6 @@ func main() {
 	}
 	logger.Timezone = nytime
 	lumber.SetLogger(logger)
-
-	err = godotenv.Load()
-	if err != nil {
-		lumber.Fatal(err, "loading .env failed")
-	}
-
-	go startHTTP()
-	startSSH()
 }
 
 func startHTTP() {
@@ -69,7 +73,6 @@ func startSSH() {
 
 				prefix := out.String("λ ").Foreground(colors.Green)
 				terminal := term.NewTerminal(s, prefix.String())
-				consecutiveFails := 0
 				for {
 					cmd, err := terminal.ReadLine()
 					if err == io.EOF {
@@ -92,10 +95,6 @@ func startSSH() {
 						out.ClearScreen()
 					default:
 						fmt.Fprintf(s, "\nInvalid command '%s'.\n\n", cmd)
-						consecutiveFails++
-						if consecutiveFails > 10 {
-							return
-						}
 					}
 				}
 			}
