@@ -15,9 +15,6 @@ import (
 )
 
 func workouts(s ssh.Session, styles output.Styles) {
-	headerStyle := styles.Green.Bold(true).Align(lipgloss.Center).Padding(0, 2)
-	baseStyle := styles.Renderer.NewStyle().Padding(0, 1)
-	indexStyle := styles.Grey.Align(lipgloss.Center)
 	headers := []string{"", "NAME", "START TIME", "DURATION", "DISTANCE", "TYPE", "AVG. HEART RATE"}
 
 	var data [][]string
@@ -54,6 +51,12 @@ func workouts(s ssh.Session, styles output.Styles) {
 		)
 	}
 
+	var (
+		headerStyle = styles.Green.Bold(true).Align(lipgloss.Center).Padding(0, 2)
+		baseStyle   = styles.Renderer.NewStyle().Padding(0, 1)
+		indexStyle  = styles.Grey.Align(lipgloss.Center)
+		titleStyle  = styles.Renderer.NewStyle().Bold(true)
+	)
 	t := table.New().
 		Border(lipgloss.NormalBorder()).
 		BorderStyle(styles.Grey).
@@ -65,6 +68,9 @@ func workouts(s ssh.Session, styles output.Styles) {
 		}
 		if col == 0 {
 			return indexStyle
+		}
+		if row != 0 && col == 1 {
+			return titleStyle
 		}
 		return baseStyle
 	})
