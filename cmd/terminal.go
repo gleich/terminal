@@ -2,7 +2,6 @@ package main
 
 import (
 	"errors"
-	"fmt"
 	"net"
 	"net/http"
 	"os"
@@ -14,6 +13,7 @@ import (
 	"github.com/charmbracelet/wish/activeterm"
 	"github.com/charmbracelet/wish/logging"
 	"github.com/gleich/lumber/v2"
+	"github.com/gleich/terminal/internal/cmds"
 	"github.com/joho/godotenv"
 )
 
@@ -61,11 +61,12 @@ func startSSH() {
 		wish.WithAddress(net.JoinHostPort("0.0.0.0", "22")),
 		wish.WithHostKeyPath(filepath.Join(homedir, ".ssh", "id_rsa")),
 		wish.WithMiddleware(func(next ssh.Handler) ssh.Handler {
-			return func(s ssh.Session) {
-				fmt.Fprintln(s, "hello world")
-			}
+			return func(s ssh.Session) { cmds.Terminal(s) }
 		}, logging.Middleware(), activeterm.Middleware()),
 	)
+	if err != nil {
+		lumber.Fatal(err, "creating server failed")
+	}
 
 	lumber.Info("starting ssh server")
 	if err = srv.ListenAndServe(); err != nil && !errors.Is(err, ssh.ErrServerClosed) {
