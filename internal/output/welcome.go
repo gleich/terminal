@@ -25,7 +25,6 @@ func Welcome(s ssh.Session, colors Colors) {
 		),
 	)
 	fmt.Fprintln(s)
-	fmt.Fprintf(s, Help(colors))
-	fmt.Fprintln(s)
+	fmt.Fprintln(s, Help(colors))
 	fmt.Fprintln(s)
 }
