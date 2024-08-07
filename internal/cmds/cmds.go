@@ -10,7 +10,7 @@ import (
 	"golang.org/x/term"
 )
 
-func Terminal(s ssh.Session, colors output.Colors) {
+func Terminal(s ssh.Session, colors output.Styles) {
 	prefix := colors.Green.Render("λ ")
 	terminal := term.NewTerminal(s, prefix)
 
@@ -34,6 +34,8 @@ func Terminal(s ssh.Session, colors output.Colors) {
 			fmt.Fprintln(s, output.Help(colors))
 		case "clear", "c":
 			colors.Renderer.Output().ClearScreen()
+		case "workouts":
+			workouts(s, colors)
 		default:
 			fmt.Fprintf(s, "\nInvalid command '%s'.\n\n", cmd)
 		}

@@ -12,22 +12,24 @@ import (
 	"github.com/muesli/termenv"
 )
 
-type Colors struct {
+type Styles struct {
 	Renderer *lipgloss.Renderer
 	Blue     lipgloss.Style
 	Green    lipgloss.Style
 	Grey     lipgloss.Style
+	Red      lipgloss.Style
 }
 
-func LoadColors(s ssh.Session) Colors {
+func LoadStyles(s ssh.Session) Styles {
 	clientOutput := outputFromSession(s)
 	r := lipgloss.NewRenderer(s)
 	r.SetOutput(clientOutput)
-	return Colors{
+	return Styles{
 		Renderer: r,
 		Blue:     r.NewStyle().Foreground(lipgloss.Color("#2B95FF")),
 		Green:    r.NewStyle().Foreground(lipgloss.Color("#30CE75")),
 		Grey:     r.NewStyle().Foreground(lipgloss.Color("#424242")),
+		Red:      r.NewStyle().Foreground(lipgloss.Color("#F30928")),
 	}
 }
 

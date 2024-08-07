@@ -7,7 +7,7 @@ import (
 	"github.com/charmbracelet/ssh"
 )
 
-func Welcome(s ssh.Session, colors Colors) {
+func Welcome(s ssh.Session, colors Styles) {
 	TypewriterAnimation(s, 60*time.Millisecond, "\nESTABLISHING CONNECTION")
 	TypewriterAnimation(s, 500*time.Millisecond, " ...\n")
 	TypewriterAnimation(
