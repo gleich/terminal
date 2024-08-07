@@ -55,7 +55,7 @@ func workouts(s ssh.Session, styles output.Styles) {
 		headerStyle = styles.Green.Bold(true).Align(lipgloss.Center).Padding(0, 2)
 		baseStyle   = styles.Renderer.NewStyle().Padding(0, 1)
 		indexStyle  = styles.Grey.Align(lipgloss.Center)
-		titleStyle  = styles.Renderer.NewStyle().Bold(true)
+		nameStyle   = styles.Renderer.NewStyle().Bold(true).Padding(0, 1).Align(lipgloss.Center)
 	)
 	t := table.New().
 		Border(lipgloss.NormalBorder()).
@@ -70,7 +70,7 @@ func workouts(s ssh.Session, styles output.Styles) {
 			return indexStyle
 		}
 		if row != 0 && col == 1 {
-			return titleStyle
+			return nameStyle
 		}
 		return baseStyle
 	})
