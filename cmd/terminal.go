@@ -14,6 +14,7 @@ import (
 	"github.com/charmbracelet/wish/logging"
 	"github.com/gleich/lumber/v2"
 	"github.com/gleich/terminal/internal/cmds"
+	"github.com/gleich/terminal/internal/output"
 	"github.com/joho/godotenv"
 )
 
@@ -61,7 +62,11 @@ func startSSH() {
 		wish.WithAddress(net.JoinHostPort("0.0.0.0", "22")),
 		wish.WithHostKeyPath(filepath.Join(homedir, ".ssh", "id_rsa")),
 		wish.WithMiddleware(func(next ssh.Handler) ssh.Handler {
-			return func(s ssh.Session) { cmds.Terminal(s) }
+			return func(s ssh.Session) {
+				colors := output.LoadColors(s)
+				output.Welcome(s, colors)
+				cmds.Terminal(s, colors)
+			}
 		}, logging.Middleware(), activeterm.Middleware()),
 	)
 	if err != nil {

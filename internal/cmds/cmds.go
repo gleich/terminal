@@ -6,11 +6,12 @@ import (
 
 	"github.com/charmbracelet/ssh"
 	"github.com/gleich/lumber/v2"
+	"github.com/gleich/terminal/internal/output"
 	"golang.org/x/term"
 )
 
-func Terminal(s ssh.Session) {
-	prefix := "λ "
+func Terminal(s ssh.Session, colors output.Colors) {
+	prefix := colors.Green.Render("λ ")
 	terminal := term.NewTerminal(s, prefix)
 
 	for {
@@ -30,7 +31,9 @@ func Terminal(s ssh.Session) {
 		case "exit":
 			return
 		case "help":
-			fmt.Fprintln(s, "hello world!")
+			fmt.Fprintln(s, output.Help(colors))
+		case "clear", "c":
+			colors.Renderer.Output().ClearScreen()
 		default:
 			fmt.Fprintf(s, "\nInvalid command '%s'.\n\n", cmd)
 		}
