@@ -3,7 +3,6 @@ package main
 import (
 	"errors"
 	"fmt"
-	"io"
 	"net"
 	"net/http"
 	"os"
@@ -15,10 +14,7 @@ import (
 	"github.com/charmbracelet/wish/activeterm"
 	"github.com/charmbracelet/wish/logging"
 	"github.com/gleich/lumber/v2"
-	"github.com/gleich/terminal/internal/cmds"
-	"github.com/gleich/terminal/internal/output"
 	"github.com/joho/godotenv"
-	"golang.org/x/term"
 )
 
 func main() {
@@ -66,44 +62,10 @@ func startSSH() {
 		wish.WithHostKeyPath(filepath.Join(homedir, ".ssh", "id_rsa")),
 		wish.WithMiddleware(func(next ssh.Handler) ssh.Handler {
 			return func(s ssh.Session) {
-				out := output.OutputFromSession(s)
-				colors := output.NewColors(out.ColorProfile())
-
-				output.Welcome(s, out, colors)
-
-				prefix := out.String("λ ").Foreground(colors.Green)
-				terminal := term.NewTerminal(s, prefix.String())
-				for {
-					cmd, err := terminal.ReadLine()
-					if err == io.EOF {
-						fmt.Fprintln(s)
-						return
-					}
-					if err != nil {
-						fmt.Println(err.Error())
-						lumber.Error(err, "processing new command failed")
-					}
-					switch cmd {
-					case "":
-					case "exit":
-						return
-					case "help":
-						cmds.Help(s)
-					case "workouts":
-						cmds.Workouts(s, out, colors)
-					case "clear":
-						out.ClearScreen()
-					default:
-						fmt.Fprintf(s, "\nInvalid command '%s'.\n\n", cmd)
-					}
-				}
+				fmt.Fprintln(s, "hello world")
 			}
-		},
-			logging.Middleware(), activeterm.Middleware()),
+		}, logging.Middleware(), activeterm.Middleware()),
 	)
-	if err != nil {
-		lumber.Fatal(err, "creating server failed")
-	}
 
 	lumber.Info("starting ssh server")
 	if err = srv.ListenAndServe(); err != nil && !errors.Is(err, ssh.ErrServerClosed) {
