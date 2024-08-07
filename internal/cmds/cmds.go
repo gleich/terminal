@@ -36,6 +36,9 @@ func Terminal(s ssh.Session, colors output.Styles) {
 			colors.Renderer.Output().ClearScreen()
 		case "workouts":
 			workouts(s, colors)
+		case "projects", "games":
+			fmt.Fprintln(s, "\nCommand is currently under construction")
+			fmt.Fprintln(s)
 		default:
 			fmt.Fprintf(s, "\nInvalid command '%s'.\n\n", cmd)
 		}
