@@ -23,7 +23,7 @@ func projects(s ssh.Session, styles output.Styles) {
 			data,
 			[]string{
 				fmt.Sprint(i + 1),
-				p.Name,
+				fmt.Sprintf("%s/%s", p.Owner, p.Name),
 				p.Description,
 				util.RenderExactFromNow(p.UpdatedAt),
 				fmt.Sprintf(
