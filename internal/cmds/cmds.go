@@ -41,7 +41,11 @@ func Terminal(s ssh.Session, styles output.Styles) {
 		case "games":
 			games(s, styles)
 		default:
-			fmt.Fprintf(s, "\nInvalid command '%s'.\n\n", cmd)
+			fmt.Fprintf(
+				s,
+				"\nInvalid command '%s'. Type `help` to see available commands.\n\n",
+				cmd,
+			)
 		}
 	}
 }

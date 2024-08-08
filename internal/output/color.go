@@ -29,7 +29,7 @@ func LoadStyles(s ssh.Session) Styles {
 		Blue:     r.NewStyle().Foreground(lipgloss.Color("#2B95FF")),
 		Green:    r.NewStyle().Foreground(lipgloss.Color("#30CE75")),
 		Grey:     r.NewStyle().Foreground(lipgloss.Color("#424242")),
-		Red:      r.NewStyle().Foreground(lipgloss.Color("#F30928")),
+		Red:      r.NewStyle().Foreground(lipgloss.Color("#ff4747")),
 	}
 }
 

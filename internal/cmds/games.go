@@ -20,7 +20,7 @@ func games(s ssh.Session, styles output.Styles) {
 		return
 	}
 
-	for i, g := range games.Data[:5] {
+	for i, g := range games.Data {
 		var achievementProgress string
 		if g.AchievementProgress == nil {
 			achievementProgress = "N/A"
@@ -39,5 +39,13 @@ func games(s ssh.Session, styles output.Styles) {
 		)
 	}
 
-	fmt.Fprintln(s, output.Table(styles).Headers(headers...).Rows(data...))
+	fmt.Fprintln(
+		s,
+		"\nTo relax I love to play games with some of my friends. Below are some of my most recent games from Steam:",
+	)
+	fmt.Fprintln(s)
+	table := output.Table(styles).Headers(headers...).Rows(data...).Render()
+	fmt.Fprintln(s, table)
+	output.LiveFrom(s, styles, table, games.Updated)
+	fmt.Fprintln(s)
 }

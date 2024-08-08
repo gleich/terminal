@@ -3,6 +3,7 @@ package cmds
 import (
 	"fmt"
 
+	"github.com/charmbracelet/lipgloss"
 	"github.com/charmbracelet/ssh"
 	"github.com/gleich/terminal/internal/lcp"
 	"github.com/gleich/terminal/internal/output"
@@ -41,5 +42,15 @@ func workouts(s ssh.Session, styles output.Styles) {
 		)
 	}
 
-	fmt.Fprintln(s, output.Table(styles).Headers(headers...).Rows(data...))
+	table := output.Table(styles).Headers(headers...).Rows(data...).Render()
+	fmt.Fprintln(
+		s,
+		styles.Renderer.NewStyle().
+			Width(lipgloss.Width(table)+10).
+			Render("\nOne of my favorite things in the world is staying active and enjoying the outdoors. I grew up in New Hampshire hiking, biking, snowshoeing, and traveling with my family. Out of all of those things I especially love cycling mainly through gravel cycling, road cycling, and mountain biking. Below are some of my most recent Strava activities:"),
+	)
+	fmt.Fprintln(s)
+	fmt.Fprintln(s, table)
+	output.LiveFrom(s, styles, table, activities.Updated)
+	fmt.Fprintln(s)
 }
