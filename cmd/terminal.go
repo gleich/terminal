@@ -63,11 +63,11 @@ func startSSH() {
 		wish.WithHostKeyPath(filepath.Join(homedir, ".ssh", "id_rsa")),
 		wish.WithMiddleware(func(next ssh.Handler) ssh.Handler {
 			return func(s ssh.Session) {
-				colors := output.LoadStyles(s)
+				styles := output.LoadStyles(s)
 				if os.Getenv("OUTPUT_WELCOME") == "true" {
-					output.Welcome(s, colors)
+					output.Welcome(s, styles)
 				}
-				cmds.Terminal(s, colors)
+				cmds.Terminal(s, styles)
 			}
 		}, logging.Middleware(), activeterm.Middleware()),
 	)

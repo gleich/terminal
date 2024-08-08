@@ -34,6 +34,8 @@ func Terminal(s ssh.Session, styles output.Styles) {
 			fmt.Fprintln(s, output.Help(styles))
 		case "clear", "c":
 			styles.Renderer.Output().ClearScreen()
+		case "about":
+			about(s, styles)
 		case "workouts":
 			workouts(s, styles)
 		case "projects":
