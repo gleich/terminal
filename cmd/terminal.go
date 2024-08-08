@@ -64,7 +64,9 @@ func startSSH() {
 		wish.WithMiddleware(func(next ssh.Handler) ssh.Handler {
 			return func(s ssh.Session) {
 				colors := output.LoadStyles(s)
-				// output.Welcome(s, colors)
+				if os.Getenv("OUTPUT_WELCOME") == "true" {
+					output.Welcome(s, colors)
+				}
 				cmds.Terminal(s, colors)
 			}
 		}, logging.Middleware(), activeterm.Middleware()),
