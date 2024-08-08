@@ -15,7 +15,7 @@ func Help(colors Styles) string {
 		BorderLeft(true).
 		BorderRight(true).
 		BorderBottom(true)
-	cmdStyle := colors.Green.Underline(true)
+	cmdStyle := colors.Green.Bold(true)
 	return box.Render(fmt.Sprintf(`%s  my recent workouts from Strava
 %s  recent projects I've worked on from GitHub
 %s     games I've recently played on Steam
