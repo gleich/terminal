@@ -28,14 +28,14 @@ type StravaActivity struct {
 func FetchActivities() (Response[[]StravaActivity], error) {
 	req, err := http.NewRequest("GET", "https://lcp.dev.mattglei.ch/strava/cache", nil)
 	if err != nil {
-		lumber.Error(err, "Failed to create new request")
+		lumber.Error(err, "creating new request failed")
 		return Response[[]StravaActivity]{}, err
 	}
 	req.Header.Set("Authorization", "Bearer "+os.Getenv("LCP_ACCESS_TOKEN"))
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
-		lumber.Error(err, "Failed to send request for Strava activities")
+		lumber.Error(err, "sending request for strava activities failed")
 		return Response[[]StravaActivity]{}, err
 	}
 	defer resp.Body.Close()

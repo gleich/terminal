@@ -11,8 +11,10 @@ import (
 )
 
 func projects(s ssh.Session, styles output.Styles) {
-	headers := []string{"", "NAME", "DESCRIPTION", "UPDATED", "LANGUAGE", "GITHUB LINK"}
-	var data [][]string
+	var (
+		headers = []string{"", "NAME", "DESCRIPTION", "UPDATED", "LANGUAGE", "GITHUB LINK"}
+		data    [][]string
+	)
 	repositories, err := lcp.FetchRepositories()
 	if err != nil {
 		fmt.Fprintln(s, styles.Red.Render("failed to load github repositories from lcp"))

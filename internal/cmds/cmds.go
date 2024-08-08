@@ -10,8 +10,8 @@ import (
 	"golang.org/x/term"
 )
 
-func Terminal(s ssh.Session, colors output.Styles) {
-	prefix := colors.Green.Render("λ ")
+func Terminal(s ssh.Session, styles output.Styles) {
+	prefix := styles.Green.Render("λ ")
 	terminal := term.NewTerminal(s, prefix)
 
 	for {
@@ -31,16 +31,15 @@ func Terminal(s ssh.Session, colors output.Styles) {
 		case "exit":
 			return
 		case "help":
-			fmt.Fprintln(s, output.Help(colors))
+			fmt.Fprintln(s, output.Help(styles))
 		case "clear", "c":
-			colors.Renderer.Output().ClearScreen()
+			styles.Renderer.Output().ClearScreen()
 		case "workouts":
-			workouts(s, colors)
+			workouts(s, styles)
 		case "projects":
-			projects(s, colors)
+			projects(s, styles)
 		case "games":
-			fmt.Fprintln(s, "\nCommand is currently under construction")
-			fmt.Fprintln(s)
+			games(s, styles)
 		default:
 			fmt.Fprintf(s, "\nInvalid command '%s'.\n\n", cmd)
 		}
