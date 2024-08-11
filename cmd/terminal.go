@@ -69,7 +69,7 @@ func startSSH() {
 				}
 				cmds.Terminal(s, styles)
 			}
-		}, logging.Middleware(), activeterm.Middleware()),
+		}, logging.StructuredMiddleware(), activeterm.Middleware()),
 	)
 	if err != nil {
 		lumber.Fatal(err, "creating server failed")
