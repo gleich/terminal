@@ -1,0 +1,77 @@
+// [string] Address to listen, all addresses will be used when empty
+// address = ""
+
+// [string] Port to listen
+port = "8888"
+
+// [bool] Permit clients to write to the TTY
+// permit_write = false
+
+// [bool] Enable basic authentication
+// enable_basic_auth = false
+
+// [string] Default username and password of basic authentication (user:pass)
+//          To enable basic authentication, set `true` to `enable_basic_auth`
+// credential = "user:pass"
+
+// [bool] Enable random URL generation
+// enable_random_url = false
+
+// [int] Default length of random strings appended to URL
+//       To enable random URL generation, set `true` to `enable_random_url`
+// random_url_length = 8
+
+// [bool] Enable TLS/SSL
+// enable_tls = false
+
+// [string] Default TLS certificate file path
+// tls_crt_file = "~/.gotty.crt"
+
+// [string] Default TLS key file path
+// tls_key_file = "~/.gotty.key"
+
+// [bool] Enable client certificate authentication
+// enable_tls_client_auth = false
+
+// [string] Certificate file of CA for client certificates
+// tls_ca_crt_file = "~/.gotty.ca.crt"
+
+// [string] Custom index.html file
+index_file = "/src/gotty/index.html"
+
+// [string] Title format of browser window
+//
+//	Available variables are:
+//	  Command    Command string
+//	  Pid        PID of the process for the client
+//	  Hostname   Server hostname
+//	  RemoteAddr Client IP address
+title_format = "terminal"
+
+// [bool] Enable client side reconnection when connection closed
+// enable_reconnect = false
+
+// [int] Interval time to try reconnection (seconds)
+//       To enable reconnection, set `true` to `enable_reconnect`
+// reconnect_time = 10
+
+// [int] Timeout seconds for waiting a client (0 to disable)
+// timeout = 60
+
+// [int] Maximum connection to gotty, 0(default) means no limit.
+// max_connection = 0
+
+// [bool] Accept only one client and exit gotty once the client exits
+// once = false
+
+// [bool] Permit clients to send command line arguments in URL (e.g. http://example.com:8080/?arg=AAA&arg=BBB)
+// permit_arguments = false
+
+// [object] Client terminal (hterm) preferences
+preferences {
+	background_color = "rgb(28, 31, 33)"
+	environment = {"TERM" = "xterm-256color"}
+	font_family = "'JetBrains Mono', monospace"
+	user_css = "https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+	font_size = 15
+}

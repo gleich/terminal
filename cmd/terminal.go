@@ -3,7 +3,6 @@ package main
 import (
 	"errors"
 	"net"
-	"net/http"
 	"os"
 	"path/filepath"
 	"time"
@@ -26,7 +25,6 @@ func main() {
 		lumber.Fatal(err, "loading .env failed")
 	}
 
-	go startHTTP()
 	startSSH()
 }
 
@@ -38,18 +36,6 @@ func setupLogger() {
 	}
 	logger.Timezone = nytime
 	lumber.SetLogger(logger)
-}
-
-func startHTTP() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		http.Redirect(w, r, "https://github.com/gleich/terminal", http.StatusTemporaryRedirect)
-	})
-
-	lumber.Info("starting http server")
-	err := http.ListenAndServe(":3000", nil)
-	if err != nil {
-		lumber.Fatal(err, "starting http server failed")
-	}
 }
 
 func startSSH() {

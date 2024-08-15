@@ -1,0 +1,1 @@
+/bin/terminal & /bin/gotty --quiet -w -p 8888 ssh -o StrictHostKeyChecking=no gotty@terminal.mattglei.ch
