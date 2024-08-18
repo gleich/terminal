@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM golang:1.22.6 AS build
+FROM golang:1.23 AS build
 
 WORKDIR /src
 COPY . .
