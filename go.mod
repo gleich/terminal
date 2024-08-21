@@ -9,7 +9,7 @@ require (
 	github.com/charmbracelet/ssh v0.0.0-20240725163421-eb71b85b27aa
 	github.com/charmbracelet/wish v1.4.2
 	github.com/creack/pty v1.1.23
-	github.com/gleich/lumber/v3 v3.0.0
+	github.com/gleich/lumber/v3 v3.0.1
 	github.com/joho/godotenv v1.5.1
 	github.com/muesli/termenv v0.15.3-0.20240509142007-81b8f94111d5
 	golang.org/x/term v0.23.0
