@@ -2,18 +2,14 @@ module github.com/gleich/terminal
 
 go 1.23
 
-require (
-	github.com/fatih/color v1.17.0 // indirect
-	github.com/wayneashleyberry/truecolor v1.0.1 // indirect
-	golang.org/x/sys v0.24.0 // indirect
-)
+require golang.org/x/sys v0.24.0 // indirect
 
 require (
 	github.com/charmbracelet/lipgloss v0.13.0
 	github.com/charmbracelet/ssh v0.0.0-20240725163421-eb71b85b27aa
 	github.com/charmbracelet/wish v1.4.2
 	github.com/creack/pty v1.1.23
-	github.com/gleich/lumber/v2 v2.3.0
+	github.com/gleich/lumber/v3 v3.0.0
 	github.com/joho/godotenv v1.5.1
 	github.com/muesli/termenv v0.15.3-0.20240509142007-81b8f94111d5
 	golang.org/x/term v0.23.0
@@ -33,7 +29,6 @@ require (
 	github.com/erikgeiser/coninput v0.0.0-20211004153227-1c3628e74d0f // indirect
 	github.com/go-logfmt/logfmt v0.6.0 // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
-	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mattn/go-localereader v0.0.1 // indirect
 	github.com/mattn/go-runewidth v0.0.16 // indirect

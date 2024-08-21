@@ -5,7 +5,7 @@ import (
 	"io"
 
 	"github.com/charmbracelet/ssh"
-	"github.com/gleich/lumber/v2"
+	"github.com/gleich/lumber/v3"
 	"github.com/gleich/terminal/internal/output"
 	"golang.org/x/term"
 )

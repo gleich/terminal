@@ -11,7 +11,7 @@ import (
 	"github.com/charmbracelet/wish"
 	"github.com/charmbracelet/wish/activeterm"
 	"github.com/charmbracelet/wish/logging"
-	"github.com/gleich/lumber/v2"
+	"github.com/gleich/lumber/v3"
 	"github.com/gleich/terminal/internal/cmds"
 	"github.com/gleich/terminal/internal/output"
 	"github.com/joho/godotenv"
@@ -29,13 +29,11 @@ func main() {
 }
 
 func setupLogger() {
-	logger := lumber.NewCustomLogger()
 	nytime, err := time.LoadLocation("America/New_York")
 	if err != nil {
 		lumber.Fatal(err, "failed to load new york timezone")
 	}
-	logger.Timezone = nytime
-	lumber.SetLogger(logger)
+	lumber.SetTimezone(nytime)
 }
 
 func startSSH() {
