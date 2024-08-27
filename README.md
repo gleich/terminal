@@ -11,3 +11,5 @@ terminal version of my [website](https://mattglei.ch). Access via the following 
 ```bash
 ssh terminal.mattglei.ch
 ```
+
+Web version available at [terminal.mattglei.ch](https://terminal.mattglei.ch). Powered by [gotty](https://github.com/sorenisanerd/gotty/tree/master).
