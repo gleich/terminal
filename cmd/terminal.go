@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+	"fmt"
 	"net"
 	"os"
 	"path/filepath"
@@ -10,7 +11,6 @@ import (
 	"github.com/charmbracelet/ssh"
 	"github.com/charmbracelet/wish"
 	"github.com/charmbracelet/wish/activeterm"
-	"github.com/charmbracelet/wish/logging"
 	"github.com/gleich/lumber/v3"
 	"github.com/gleich/terminal/internal/cmds"
 	"github.com/gleich/terminal/internal/output"
@@ -48,13 +48,20 @@ func startSSH() {
 		wish.WithHostKeyPath(filepath.Join(homedir, ".ssh", "id_rsa")),
 		wish.WithMiddleware(func(next ssh.Handler) ssh.Handler {
 			return func(s ssh.Session) {
+				ct := time.Now()
+				lumber.Info(
+					fmt.Sprintf("login from user \"%s\" started connection to terminal", s.User()),
+				)
 				styles := output.LoadStyles(s)
 				if os.Getenv("OUTPUT_WELCOME") == "true" {
 					output.Welcome(s, styles)
 				}
 				cmds.Terminal(s, styles)
+				lumber.Done(
+					fmt.Sprintf("logout from user \"%s\". spent %s", s.User(), time.Since(ct)),
+				)
 			}
-		}, logging.StructuredMiddleware(), activeterm.Middleware()),
+		}, activeterm.Middleware()),
 	)
 	if err != nil {
 		lumber.Fatal(err, "creating server failed")
