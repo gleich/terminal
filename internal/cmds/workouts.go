@@ -25,6 +25,8 @@ func workouts(s ssh.Session, styles output.Styles) {
 			a.SportType = "Gravel Ride"
 		case "MountainBikeRide":
 			a.SportType = "Mountain Bike Ride"
+		case "WeightTraining":
+			a.SportType = "Weight Training"
 		case "":
 			a.SportType = "Workout"
 		}
