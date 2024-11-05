@@ -23,7 +23,7 @@ func Table(styles Styles) *table.Table {
 			if col == 0 {
 				return indexStyle
 			}
-			if row != 0 && col == 1 {
+			if row != -1 && col == 1 {
 				return nameStyle
 			}
 			return baseStyle
