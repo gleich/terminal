@@ -17,7 +17,7 @@ func Table(styles Styles) *table.Table {
 		BorderStyle(styles.Grey).
 		BorderRow(true).
 		StyleFunc(func(row, col int) lipgloss.Style {
-			if row == 0 {
+			if row == -1 {
 				return headerStyle
 			}
 			if col == 0 {
