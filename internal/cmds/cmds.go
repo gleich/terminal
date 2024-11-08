@@ -3,6 +3,7 @@ package cmds
 import (
 	"fmt"
 	"io"
+	"strings"
 
 	"github.com/charmbracelet/ssh"
 	"github.com/gleich/lumber/v3"
@@ -26,7 +27,7 @@ func Terminal(s ssh.Session, styles output.Styles) {
 			return
 		}
 
-		switch cmd {
+		switch strings.Trim(cmd, " ") {
 		case "":
 		case "exit":
 			return
