@@ -20,6 +20,7 @@ func Help(styles Styles) string {
 %s  my recent workouts from Strava
 %s  recent projects I've worked on from GitHub
 %s     games I've recently played on Steam
+%s     music I've listened to recently
 
 %s   displays this help table
 %s   exit out of terminal
@@ -28,6 +29,7 @@ func Help(styles Styles) string {
 		cmdStyle.Render("workouts"),
 		cmdStyle.Render("projects"),
 		cmdStyle.Render("games"),
+		cmdStyle.Render("music"),
 		cmdStyle.Render("help"),
 		cmdStyle.Render("exit"),
 		cmdStyle.Render("clear"),

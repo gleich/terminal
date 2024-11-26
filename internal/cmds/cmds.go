@@ -43,6 +43,8 @@ func Terminal(s ssh.Session, styles output.Styles) {
 			projects(s, styles)
 		case "games":
 			games(s, styles)
+		case "music":
+			music(s, styles)
 		default:
 			fmt.Fprintf(
 				s,
