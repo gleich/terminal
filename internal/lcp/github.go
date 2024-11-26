@@ -1,13 +1,7 @@
 package lcp
 
 import (
-	"encoding/json"
-	"io"
-	"net/http"
-	"os"
 	"time"
-
-	"github.com/gleich/lumber/v3"
 )
 
 type GitHubRepository struct {
@@ -22,33 +16,11 @@ type GitHubRepository struct {
 	URL           string    `json:"url"`
 }
 
-func FetchRepositories() (Response[[]GitHubRepository], error) {
-	req, err := http.NewRequest("GET", "https://lcp.dev.mattglei.ch/github/cache", nil)
+func FetchRepositories() (LcpResponse[[]GitHubRepository], error) {
+	var zeroValue LcpResponse[[]GitHubRepository]
+	repos, err := fetchCache[[]GitHubRepository]("github")
 	if err != nil {
-		lumber.Error(err, "Failed to create new request")
-		return Response[[]GitHubRepository]{}, err
+		return zeroValue, nil
 	}
-	req.Header.Set("Authorization", "Bearer "+os.Getenv("LCP_ACCESS_TOKEN"))
-
-	resp, err := http.DefaultClient.Do(req)
-	if err != nil {
-		lumber.Error(err, "Failed to send request for GitHub projects")
-		return Response[[]GitHubRepository]{}, err
-	}
-	defer resp.Body.Close()
-
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		lumber.Error(err, "reading response body failed")
-		return Response[[]GitHubRepository]{}, err
-	}
-
-	var response Response[[]GitHubRepository]
-	err = json.Unmarshal(body, &response)
-	if err != nil {
-		lumber.Error(err, "failed to parse json")
-		lumber.Debug(string(body))
-		return Response[[]GitHubRepository]{}, err
-	}
-	return response, nil
+	return repos, nil
 }

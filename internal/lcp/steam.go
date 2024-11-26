@@ -1,13 +1,7 @@
 package lcp
 
 import (
-	"encoding/json"
-	"io"
-	"net/http"
-	"os"
 	"time"
-
-	"github.com/gleich/lumber/v3"
 )
 
 type SteamGame struct {
@@ -34,33 +28,11 @@ type SteamAchievement struct {
 	UnlockTime  *time.Time `json:"unlock_time"`
 }
 
-func FetchGames() (Response[[]SteamGame], error) {
-	req, err := http.NewRequest("GET", "https://lcp.dev.mattglei.ch/steam/cache", nil)
+func FetchGames() (LcpResponse[[]SteamGame], error) {
+	var zeroValue LcpResponse[[]SteamGame]
+	games, err := fetchCache[[]SteamGame]("steam")
 	if err != nil {
-		lumber.Error(err, "creating new request failed")
-		return Response[[]SteamGame]{}, err
+		return zeroValue, err
 	}
-	req.Header.Set("Authorization", "Bearer "+os.Getenv("LCP_ACCESS_TOKEN"))
-
-	resp, err := http.DefaultClient.Do(req)
-	if err != nil {
-		lumber.Error(err, "sending request for steam games failed")
-		return Response[[]SteamGame]{}, err
-	}
-	defer resp.Body.Close()
-
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		lumber.Error(err, "reading response body failed")
-		return Response[[]SteamGame]{}, err
-	}
-
-	var response Response[[]SteamGame]
-	err = json.Unmarshal(body, &response)
-	if err != nil {
-		lumber.Error(err, "failed to parse json")
-		lumber.Debug(string(body))
-		return Response[[]SteamGame]{}, err
-	}
-	return response, nil
+	return games, nil
 }
