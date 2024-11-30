@@ -27,7 +27,7 @@ func Terminal(s ssh.Session, styles output.Styles) {
 			return
 		}
 
-		switch strings.Trim(cmd, " ") {
+		switch strings.ToLower(strings.Trim(cmd, " ")) {
 		case "":
 		case "exit":
 			return
