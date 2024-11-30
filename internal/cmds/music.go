@@ -19,8 +19,17 @@ func music(s ssh.Session, styles output.Styles) {
 		fmt.Fprintln(s, styles.Red.Render("failed to load data from apple music cache"))
 		return
 	}
+	rowStyle := lipgloss.NewStyle().Width(40)
 	for i, s := range cacheData.Data.RecentlyPlayed {
-		data = append(data, []string{fmt.Sprint(i + 1), s.Track, s.Artist, s.Album})
+		data = append(
+			data,
+			[]string{
+				fmt.Sprint(i + 1),
+				rowStyle.Render(s.Track),
+				rowStyle.Render(s.Artist),
+				rowStyle.Render(s.Album),
+			},
+		)
 	}
 
 	table := output.Table(styles).Headers(headers...).Rows(data...).Render()
