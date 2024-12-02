@@ -4,8 +4,8 @@ github.com/aymanbagabas/go-osc52/v2 v2.0.1 h1:HwpRHbFMcZLEVr42D4p7XBqjyuxQH5SMiE
 github.com/aymanbagabas/go-osc52/v2 v2.0.1/go.mod h1:uYgXzlJ7ZpABp8OJ+exZzJJhRNQ2ASbcXHWsFqH8hp8=
 github.com/aymanbagabas/go-udiff v0.2.0 h1:TK0fH4MteXUDspT88n8CKzvK0X9O2xu9yQjWpi6yML8=
 github.com/aymanbagabas/go-udiff v0.2.0/go.mod h1:RE4Ex0qsGkTAJoQdQQCA0uG+nAzJO/pI/QwceO5fgrA=
-github.com/charmbracelet/bubbletea v1.2.2 h1:EMz//Ky/aFS2uLcKqpCst5UOE6z5CFDGRsUpyXz0chs=
-github.com/charmbracelet/bubbletea v1.2.2/go.mod h1:Qr6fVQw+wX7JkWWkVyXYk/ZUQ92a6XNekLXa3rR18MM=
+github.com/charmbracelet/bubbletea v1.2.4 h1:KN8aCViA0eps9SCOThb2/XPIlea3ANJLUkv3KnQRNCE=
+github.com/charmbracelet/bubbletea v1.2.4/go.mod h1:Qr6fVQw+wX7JkWWkVyXYk/ZUQ92a6XNekLXa3rR18MM=
 github.com/charmbracelet/keygen v0.5.1 h1:zBkkYPtmKDVTw+cwUyY6ZwGDhRxXkEp0Oxs9sqMLqxI=
 github.com/charmbracelet/keygen v0.5.1/go.mod h1:zznJVmK/GWB6dAtjluqn2qsttiCBhA5MZSiwb80fcHw=
 github.com/charmbracelet/lipgloss v1.0.0 h1:O7VkGDvqEdGi93X+DeqsQ7PKHDgtQfF8j8/O2qFMQNg=
@@ -16,12 +16,12 @@ github.com/charmbracelet/ssh v0.0.0-20240725163421-eb71b85b27aa h1:6rePgmsJguB6Z
 github.com/charmbracelet/ssh v0.0.0-20240725163421-eb71b85b27aa/go.mod h1:LmMZag2g7ILMmWtDmU7dIlctUopwmb73KpPzj0ip1uk=
 github.com/charmbracelet/wish v1.4.3 h1:7FvNLoPGqiT7EdjQP4+XuvM1Hrnx9DyknilbD+Okx1s=
 github.com/charmbracelet/wish v1.4.3/go.mod h1:hVgmhwhd52fLmO6m5AkREUMZYqQ0qmIJQDMe3HsNPmU=
-github.com/charmbracelet/x/ansi v0.4.5 h1:LqK4vwBNaXw2AyGIICa5/29Sbdq58GbGdFngSexTdRM=
-github.com/charmbracelet/x/ansi v0.4.5/go.mod h1:dk73KoMTT5AX5BsX0KrqhsTqAnhZZoCBjs7dGWp4Ktw=
+github.com/charmbracelet/x/ansi v0.5.2 h1:dEa1x2qdOZXD/6439s+wF7xjV+kZLu/iN00GuXXrU9E=
+github.com/charmbracelet/x/ansi v0.5.2/go.mod h1:KBUFw1la39nl0dLl10l5ORDAqGXaeurTQmwyyVKse/Q=
 github.com/charmbracelet/x/conpty v0.1.0 h1:4zc8KaIcbiL4mghEON8D72agYtSeIgq8FSThSPQIb+U=
 github.com/charmbracelet/x/conpty v0.1.0/go.mod h1:rMFsDJoDwVmiYM10aD4bH2XiRgwI7NYJtQgl5yskjEQ=
-github.com/charmbracelet/x/errors v0.0.0-20241113152101-0af7d04e9f32 h1:FzJOeR9C8zL99r2Y0mobrTsoFykBTS15gYS315IxJNE=
-github.com/charmbracelet/x/errors v0.0.0-20241113152101-0af7d04e9f32/go.mod h1:2P0UgXMEa6TsToMSuFqKFQR+fZTO9CNGUNokkPatT/0=
+github.com/charmbracelet/x/errors v0.0.0-20241122161412-4559bf4d941d h1:RW6fUY6hKVJzIMVIao8roFbocjbFojmlAa3MNHE5UZc=
+github.com/charmbracelet/x/errors v0.0.0-20241122161412-4559bf4d941d/go.mod h1:2P0UgXMEa6TsToMSuFqKFQR+fZTO9CNGUNokkPatT/0=
 github.com/charmbracelet/x/exp/golden v0.0.0-20240806155701-69247e0abc2a h1:G99klV19u0QnhiizODirwVksQB91TJKV/UaTnACcG30=
 github.com/charmbracelet/x/exp/golden v0.0.0-20240806155701-69247e0abc2a/go.mod h1:wDlXFlCrmJ8J+swcL/MnGUuYnqgQdW9rhSD61oNMb6U=
 github.com/charmbracelet/x/term v0.2.1 h1:AQeHeLZ1OqSXhrAWpYUtZyX1T3zVxfpZuEQMIQaGIAQ=
