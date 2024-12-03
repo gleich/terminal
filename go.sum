@@ -20,8 +20,8 @@ github.com/charmbracelet/x/ansi v0.5.2 h1:dEa1x2qdOZXD/6439s+wF7xjV+kZLu/iN00GuX
 github.com/charmbracelet/x/ansi v0.5.2/go.mod h1:KBUFw1la39nl0dLl10l5ORDAqGXaeurTQmwyyVKse/Q=
 github.com/charmbracelet/x/conpty v0.1.0 h1:4zc8KaIcbiL4mghEON8D72agYtSeIgq8FSThSPQIb+U=
 github.com/charmbracelet/x/conpty v0.1.0/go.mod h1:rMFsDJoDwVmiYM10aD4bH2XiRgwI7NYJtQgl5yskjEQ=
-github.com/charmbracelet/x/errors v0.0.0-20241122161412-4559bf4d941d h1:RW6fUY6hKVJzIMVIao8roFbocjbFojmlAa3MNHE5UZc=
-github.com/charmbracelet/x/errors v0.0.0-20241122161412-4559bf4d941d/go.mod h1:2P0UgXMEa6TsToMSuFqKFQR+fZTO9CNGUNokkPatT/0=
+github.com/charmbracelet/x/errors v0.0.0-20241203170811-1f0219946599 h1:Pi/vEb/FS3kkf15v+8pU3CWJpfvX2gvvC/HLP0tG6jI=
+github.com/charmbracelet/x/errors v0.0.0-20241203170811-1f0219946599/go.mod h1:2P0UgXMEa6TsToMSuFqKFQR+fZTO9CNGUNokkPatT/0=
 github.com/charmbracelet/x/exp/golden v0.0.0-20240806155701-69247e0abc2a h1:G99klV19u0QnhiizODirwVksQB91TJKV/UaTnACcG30=
 github.com/charmbracelet/x/exp/golden v0.0.0-20240806155701-69247e0abc2a/go.mod h1:wDlXFlCrmJ8J+swcL/MnGUuYnqgQdW9rhSD61oNMb6U=
 github.com/charmbracelet/x/term v0.2.1 h1:AQeHeLZ1OqSXhrAWpYUtZyX1T3zVxfpZuEQMIQaGIAQ=
@@ -34,8 +34,8 @@ github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/erikgeiser/coninput v0.0.0-20211004153227-1c3628e74d0f h1:Y/CXytFA4m6baUTXGLOoWe4PQhGxaX0KpnayAqC48p4=
 github.com/erikgeiser/coninput v0.0.0-20211004153227-1c3628e74d0f/go.mod h1:vw97MGsxSvLiUE2X8qFplwetxpGLQrlU1Q9AUEIzCaM=
-github.com/gleich/lumber/v3 v3.0.1 h1:swVH/yAlEkcE5faJnXQJVbGs/R2YcJpXI47dyUtR++Q=
-github.com/gleich/lumber/v3 v3.0.1/go.mod h1:VWZc7cGxgHGdEDh9tyGusYexsl88DunuBlG2WvWVW+0=
+github.com/gleich/lumber/v3 v3.0.2 h1:wq8+yTb2NEbT7XEA17mSQ7U2LPJRVNBZWQ6590xzf5k=
+github.com/gleich/lumber/v3 v3.0.2/go.mod h1:ZLoHXBIBFNLa58nkJnqhVjPFRqwGctEZyiEDv2wvX8c=
 github.com/go-logfmt/logfmt v0.6.0 h1:wGYYu3uicYdqXVgoYbvnkrPVXkuLM1p1ifugDMEdRi4=
 github.com/go-logfmt/logfmt v0.6.0/go.mod h1:WYhtIu8zTZfxdn5+rREduYbwxfcBr/Vr6KEVveWlfTs=
 github.com/joho/godotenv v1.5.1 h1:7eLL/+HRGLY0ldzfGMeQkb7vMd0as4CfYvUVzLqw0N0=

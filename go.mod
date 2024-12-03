@@ -9,7 +9,7 @@ require (
 	github.com/charmbracelet/ssh v0.0.0-20240725163421-eb71b85b27aa
 	github.com/charmbracelet/wish v1.4.3
 	github.com/creack/pty v1.1.24
-	github.com/gleich/lumber/v3 v3.0.1
+	github.com/gleich/lumber/v3 v3.0.2
 	github.com/joho/godotenv v1.5.1
 	github.com/muesli/termenv v0.15.3-0.20240509142007-81b8f94111d5
 	golang.org/x/term v0.26.0
@@ -23,7 +23,7 @@ require (
 	github.com/charmbracelet/log v0.4.0 // indirect
 	github.com/charmbracelet/x/ansi v0.5.2 // indirect
 	github.com/charmbracelet/x/conpty v0.1.0 // indirect
-	github.com/charmbracelet/x/errors v0.0.0-20241122161412-4559bf4d941d // indirect
+	github.com/charmbracelet/x/errors v0.0.0-20241203170811-1f0219946599 // indirect
 	github.com/charmbracelet/x/term v0.2.1 // indirect
 	github.com/charmbracelet/x/termios v0.1.0 // indirect
 	github.com/erikgeiser/coninput v0.0.0-20211004153227-1c3628e74d0f // indirect
