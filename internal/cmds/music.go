@@ -11,7 +11,7 @@ import (
 
 func music(s ssh.Session, styles output.Styles) {
 	var (
-		headers = []string{"", "NAME", "ARTIST", "ALBUM"}
+		headers = []string{"", "NAME", "ARTIST"}
 		data    [][]string
 	)
 	cacheData, err := lcp.FetchAppleMusicCache()
@@ -19,7 +19,7 @@ func music(s ssh.Session, styles output.Styles) {
 		fmt.Fprintln(s, styles.Red.Render("failed to load data from apple music cache"))
 		return
 	}
-	rowStyle := lipgloss.NewStyle().Width(40)
+	rowStyle := lipgloss.NewStyle().MaxWidth(40)
 	for i, s := range cacheData.Data.RecentlyPlayed {
 		data = append(
 			data,
@@ -27,7 +27,6 @@ func music(s ssh.Session, styles output.Styles) {
 				fmt.Sprint(i + 1),
 				rowStyle.Render(s.Track),
 				rowStyle.Render(s.Artist),
-				rowStyle.Render(s.Album),
 			},
 		)
 	}

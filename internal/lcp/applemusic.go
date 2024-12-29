@@ -5,15 +5,12 @@ type AppleMusicCacheData struct {
 }
 
 type AppleMusicSong struct {
-	Track            string   `json:"track"`
-	Artist           string   `json:"artist"`
-	Album            string   `json:"album"`
-	Genres           []string `json:"genres"`
-	ReleaseDate      string   `json:"release_date"`
-	DurationInMillis int      `json:"duration_in_millis"`
-	AlbumArtURL      string   `json:"album_art_url"`
-	URL              string   `json:"url"`
-	ID               string   `json:"id"`
+	Track            string `json:"track"`
+	Artist           string `json:"artist"`
+	DurationInMillis int    `json:"duration_in_millis"`
+	AlbumArtURL      string `json:"album_art_url"`
+	URL              string `json:"url"`
+	ID               string `json:"id"`
 }
 
 func FetchAppleMusicCache() (LcpResponse[AppleMusicCacheData], error) {
