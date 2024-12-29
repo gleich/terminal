@@ -18,7 +18,7 @@ type LcpResponse[T any] struct {
 
 func fetchCache[T any](name string) (LcpResponse[T], error) {
 	var zeroValue LcpResponse[T] // acts a "nil" value to be returned when there is an error
-	url, err := url.JoinPath("https://lcp.dev.mattglei.ch/", name, "/cache")
+	url, err := url.JoinPath(os.Getenv("ENDPOINT"), name, "/cache")
 	if err != nil {
 		return zeroValue, err
 	}
@@ -28,7 +28,6 @@ func fetchCache[T any](name string) (LcpResponse[T], error) {
 		lumber.Error(err, "creating request failed")
 		return zeroValue, err
 	}
-	req.Header.Set("Authorization", "Bearer "+os.Getenv("LCP_ACCESS_TOKEN"))
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
