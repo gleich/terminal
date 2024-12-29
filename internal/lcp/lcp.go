@@ -17,7 +17,7 @@ type LcpResponse[T any] struct {
 
 func fetchCache[T any](name string) (LcpResponse[T], error) {
 	var zeroValue LcpResponse[T] // acts a "nil" value to be returned when there is an error
-	url, err := url.JoinPath("https://lcp.dev.mattglei.ch", name, "/cache")
+	url, err := url.JoinPath("https://lcp.dev.mattglei.ch", name)
 	if err != nil {
 		return zeroValue, err
 	}
