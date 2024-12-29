@@ -5,7 +5,6 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"os"
 	"time"
 
 	"github.com/gleich/lumber/v3"
@@ -18,7 +17,7 @@ type LcpResponse[T any] struct {
 
 func fetchCache[T any](name string) (LcpResponse[T], error) {
 	var zeroValue LcpResponse[T] // acts a "nil" value to be returned when there is an error
-	url, err := url.JoinPath(os.Getenv("ENDPOINT"), name, "/cache")
+	url, err := url.JoinPath("https://lcp.dev.mattglei.ch", name, "/cache")
 	if err != nil {
 		return zeroValue, err
 	}
