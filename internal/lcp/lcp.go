@@ -2,9 +2,11 @@ package lcp
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"net/http"
 	"net/url"
+	"os"
 	"time"
 
 	"github.com/gleich/lumber/v3"
@@ -27,6 +29,7 @@ func fetchCache[T any](name string) (LcpResponse[T], error) {
 		lumber.Error(err, "creating request failed")
 		return zeroValue, err
 	}
+	req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", os.Getenv("LCP_TOKEN")))
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
