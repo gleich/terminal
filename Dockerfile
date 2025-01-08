@@ -10,7 +10,7 @@ FROM alpine:3.20.2
 
 WORKDIR /bin
 
-RUN apk update && apk add --no-cache ca-certificates=20241121-r0 tzdata=2024b-r0 wget=1.24.5-r0 openssh=9.7_p1-r4
+RUN apk update && apk add --no-cache ca-certificates=20241121-r1 tzdata=2024b-r0 wget=1.24.5-r0 openssh=9.7_p1-r4
 
 RUN wget -q https://github.com/sorenisanerd/gotty/releases/download/v1.5.0/gotty_v1.5.0_linux_amd64.tar.gz \
     && tar xvfz gotty_v1.5.0_linux_amd64.tar.gz
