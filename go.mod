@@ -1,4 +1,4 @@
-module github.com/gleich/terminal
+module pkg.mattglei.ch/terminal
 
 go 1.23
 

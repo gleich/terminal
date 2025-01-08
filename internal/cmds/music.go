@@ -5,8 +5,8 @@ import (
 
 	"github.com/charmbracelet/lipgloss"
 	"github.com/charmbracelet/ssh"
-	"github.com/gleich/terminal/internal/lcp"
-	"github.com/gleich/terminal/internal/output"
+	"pkg.mattglei.ch/terminal/internal/lcp"
+	"pkg.mattglei.ch/terminal/internal/output"
 )
 
 func music(s ssh.Session, styles output.Styles) {

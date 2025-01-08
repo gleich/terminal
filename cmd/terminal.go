@@ -12,9 +12,9 @@ import (
 	"github.com/charmbracelet/wish"
 	"github.com/charmbracelet/wish/activeterm"
 	"github.com/gleich/lumber/v3"
-	"github.com/gleich/terminal/internal/cmds"
-	"github.com/gleich/terminal/internal/output"
 	"github.com/joho/godotenv"
+	"pkg.mattglei.ch/terminal/internal/cmds"
+	"pkg.mattglei.ch/terminal/internal/output"
 )
 
 func main() {

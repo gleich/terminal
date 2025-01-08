@@ -7,8 +7,8 @@ import (
 
 	"github.com/charmbracelet/ssh"
 	"github.com/gleich/lumber/v3"
-	"github.com/gleich/terminal/internal/output"
 	"golang.org/x/term"
+	"pkg.mattglei.ch/terminal/internal/output"
 )
 
 func Terminal(s ssh.Session, styles output.Styles) {
