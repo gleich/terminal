@@ -19,8 +19,8 @@ type StravaActivity struct {
 	AverageHeartrate   float32   `json:"average_heartrate"`
 }
 
-func FetchActivities() (LcpResponse[[]StravaActivity], error) {
-	var zeroValue LcpResponse[[]StravaActivity]
+func FetchActivities() (response[[]StravaActivity], error) {
+	var zeroValue response[[]StravaActivity]
 	activities, err := fetchCache[[]StravaActivity]("strava")
 	if err != nil {
 		return zeroValue, err

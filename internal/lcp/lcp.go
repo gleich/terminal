@@ -12,13 +12,13 @@ import (
 	"pkg.mattglei.ch/timber"
 )
 
-type LcpResponse[T any] struct {
+type response[T any] struct {
 	Data    T
 	Updated time.Time
 }
 
-func fetchCache[T any](name string) (LcpResponse[T], error) {
-	var zeroValue LcpResponse[T] // acts a "nil" value to be returned when there is an error
+func fetchCache[T any](name string) (response[T], error) {
+	var zeroValue response[T] // acts a "nil" value to be returned when there is an error
 	url, err := url.JoinPath("https://lcp.dev.mattglei.ch", name)
 	if err != nil {
 		return zeroValue, err
@@ -44,7 +44,7 @@ func fetchCache[T any](name string) (LcpResponse[T], error) {
 		return zeroValue, err
 	}
 
-	var response LcpResponse[T]
+	var response response[T]
 	err = json.Unmarshal(body, &response)
 	if err != nil {
 		timber.Error(err, "failed to parse json")

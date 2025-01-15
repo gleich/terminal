@@ -28,8 +28,8 @@ type SteamAchievement struct {
 	UnlockTime  *time.Time `json:"unlock_time"`
 }
 
-func FetchGames() (LcpResponse[[]SteamGame], error) {
-	var zeroValue LcpResponse[[]SteamGame]
+func FetchGames() (response[[]SteamGame], error) {
+	var zeroValue response[[]SteamGame]
 	games, err := fetchCache[[]SteamGame]("steam")
 	if err != nil {
 		return zeroValue, err

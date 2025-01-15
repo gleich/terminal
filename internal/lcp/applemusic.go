@@ -13,8 +13,8 @@ type AppleMusicSong struct {
 	ID               string `json:"id"`
 }
 
-func FetchAppleMusicCache() (LcpResponse[AppleMusicCacheData], error) {
-	var zeroValue LcpResponse[AppleMusicCacheData]
+func FetchAppleMusicCache() (response[AppleMusicCacheData], error) {
+	var zeroValue response[AppleMusicCacheData]
 	data, err := fetchCache[AppleMusicCacheData]("applemusic")
 	if err != nil {
 		return zeroValue, nil

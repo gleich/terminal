@@ -16,8 +16,8 @@ type GitHubRepository struct {
 	URL           string    `json:"url"`
 }
 
-func FetchRepositories() (LcpResponse[[]GitHubRepository], error) {
-	var zeroValue LcpResponse[[]GitHubRepository]
+func FetchRepositories() (response[[]GitHubRepository], error) {
+	var zeroValue response[[]GitHubRepository]
 	repos, err := fetchCache[[]GitHubRepository]("github")
 	if err != nil {
 		return zeroValue, nil
