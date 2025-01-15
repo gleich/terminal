@@ -9,7 +9,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/gleich/lumber/v3"
+	"pkg.mattglei.ch/timber"
 )
 
 type LcpResponse[T any] struct {
@@ -26,29 +26,29 @@ func fetchCache[T any](name string) (LcpResponse[T], error) {
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
-		lumber.Error(err, "creating request failed")
+		timber.Error(err, "creating request failed")
 		return zeroValue, err
 	}
 	req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", os.Getenv("LCP_TOKEN")))
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
-		lumber.Error(err, "sending request failed")
+		timber.Error(err, "sending request failed")
 		return zeroValue, err
 	}
 	defer resp.Body.Close()
 
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
-		lumber.Error(err, "reading response body failed")
+		timber.Error(err, "reading response body failed")
 		return zeroValue, err
 	}
 
 	var response LcpResponse[T]
 	err = json.Unmarshal(body, &response)
 	if err != nil {
-		lumber.Error(err, "failed to parse json")
-		lumber.Debug(string(body))
+		timber.Error(err, "failed to parse json")
+		timber.Debug(string(body))
 		return zeroValue, err
 	}
 	return response, nil

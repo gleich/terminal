@@ -16,8 +16,8 @@ github.com/charmbracelet/ssh v0.0.0-20241211182756-4fe22b0f1b7c h1:treQxMBdI2PaD
 github.com/charmbracelet/ssh v0.0.0-20241211182756-4fe22b0f1b7c/go.mod h1:CY1xbl2z+ZeBmNWItKZyxx0zgDgnhmR57+DTsHOobJ4=
 github.com/charmbracelet/wish v1.4.4 h1:wtfoAMkf8Db9zi+9Lme2f7XKMxL6BqfgDWbqcTUHLaU=
 github.com/charmbracelet/wish v1.4.4/go.mod h1:XB8v51UxIFMRlUod9lLaAgOsj/wpe+qW9HjsoYIiNMo=
-github.com/charmbracelet/x/ansi v0.6.0 h1:qOznutrb93gx9oMiGf7caF7bqqubh6YIM0SWKyA08pA=
-github.com/charmbracelet/x/ansi v0.6.0/go.mod h1:KBUFw1la39nl0dLl10l5ORDAqGXaeurTQmwyyVKse/Q=
+github.com/charmbracelet/x/ansi v0.7.0 h1:/QfFmiXOGGwN6fRbzvQaYp7fu1pkxpZ3qFBZWBsP404=
+github.com/charmbracelet/x/ansi v0.7.0/go.mod h1:KBUFw1la39nl0dLl10l5ORDAqGXaeurTQmwyyVKse/Q=
 github.com/charmbracelet/x/conpty v0.1.0 h1:4zc8KaIcbiL4mghEON8D72agYtSeIgq8FSThSPQIb+U=
 github.com/charmbracelet/x/conpty v0.1.0/go.mod h1:rMFsDJoDwVmiYM10aD4bH2XiRgwI7NYJtQgl5yskjEQ=
 github.com/charmbracelet/x/errors v0.0.0-20250107110353-48b574af22a5 h1:Hx72S6S4jAfrrWE3pv9IbudVdUV4htBgkOX800o17Bk=
@@ -34,8 +34,6 @@ github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/erikgeiser/coninput v0.0.0-20211004153227-1c3628e74d0f h1:Y/CXytFA4m6baUTXGLOoWe4PQhGxaX0KpnayAqC48p4=
 github.com/erikgeiser/coninput v0.0.0-20211004153227-1c3628e74d0f/go.mod h1:vw97MGsxSvLiUE2X8qFplwetxpGLQrlU1Q9AUEIzCaM=
-github.com/gleich/lumber/v3 v3.0.2 h1:wq8+yTb2NEbT7XEA17mSQ7U2LPJRVNBZWQ6590xzf5k=
-github.com/gleich/lumber/v3 v3.0.2/go.mod h1:ZLoHXBIBFNLa58nkJnqhVjPFRqwGctEZyiEDv2wvX8c=
 github.com/go-logfmt/logfmt v0.6.0 h1:wGYYu3uicYdqXVgoYbvnkrPVXkuLM1p1ifugDMEdRi4=
 github.com/go-logfmt/logfmt v0.6.0/go.mod h1:WYhtIu8zTZfxdn5+rREduYbwxfcBr/Vr6KEVveWlfTs=
 github.com/joho/godotenv v1.5.1 h1:7eLL/+HRGLY0ldzfGMeQkb7vMd0as4CfYvUVzLqw0N0=
@@ -79,3 +77,5 @@ golang.org/x/text v0.21.0 h1:zyQAAkrwaneQ066sspRyJaG9VNi/YJ1NfzcGB3hZ/qo=
 golang.org/x/text v0.21.0/go.mod h1:4IBbMaMmOPCJ8SecivzSH54+73PCFmPWxNTLm+vZkEQ=
 gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
 gopkg.in/yaml.v3 v3.0.1/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
+pkg.mattglei.ch/timber v1.0.0 h1:OQk7AyFZhfAeADbAj8wXBg/pD1fBngSWYD3EJ/v34HE=
+pkg.mattglei.ch/timber v1.0.0/go.mod h1:Go9fz7dL27Oo7t3ksPAthw6JzCJmUMdSiEbqZhKDxLc=

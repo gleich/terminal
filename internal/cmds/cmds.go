@@ -6,9 +6,9 @@ import (
 	"strings"
 
 	"github.com/charmbracelet/ssh"
-	"github.com/gleich/lumber/v3"
 	"golang.org/x/term"
 	"pkg.mattglei.ch/terminal/internal/output"
+	"pkg.mattglei.ch/timber"
 )
 
 func Terminal(s ssh.Session, styles output.Styles) {
@@ -22,7 +22,7 @@ func Terminal(s ssh.Session, styles output.Styles) {
 			return
 		}
 		if err != nil {
-			lumber.Error(err, "failed to process command")
+			timber.Error(err, "failed to process command")
 			fmt.Fprintln(s, "processing command failed, closing connection")
 			return
 		}

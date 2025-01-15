@@ -9,10 +9,10 @@ require (
 	github.com/charmbracelet/ssh v0.0.0-20241211182756-4fe22b0f1b7c
 	github.com/charmbracelet/wish v1.4.4
 	github.com/creack/pty v1.1.24
-	github.com/gleich/lumber/v3 v3.0.2
 	github.com/joho/godotenv v1.5.1
 	github.com/muesli/termenv v0.15.3-0.20240509142007-81b8f94111d5
 	golang.org/x/term v0.28.0
+	pkg.mattglei.ch/timber v1.0.0
 )
 
 require (
@@ -21,7 +21,7 @@ require (
 	github.com/charmbracelet/bubbletea v1.2.4 // indirect
 	github.com/charmbracelet/keygen v0.5.1 // indirect
 	github.com/charmbracelet/log v0.4.0 // indirect
-	github.com/charmbracelet/x/ansi v0.6.0 // indirect
+	github.com/charmbracelet/x/ansi v0.7.0 // indirect
 	github.com/charmbracelet/x/conpty v0.1.0 // indirect
 	github.com/charmbracelet/x/errors v0.0.0-20250107110353-48b574af22a5 // indirect
 	github.com/charmbracelet/x/term v0.2.1 // indirect
