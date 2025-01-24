@@ -1,24 +1,12 @@
 package lcp
 
 import (
-	"time"
+	"pkg.mattglei.ch/lcp-2/pkg/models"
 )
 
-type GitHubRepository struct {
-	Name          string    `json:"name"`
-	Owner         string    `json:"owner"`
-	Language      string    `json:"language"`
-	LanguageColor string    `json:"language_color"`
-	Description   string    `json:"description"`
-	UpdatedAt     time.Time `json:"updated_at"`
-	Stargazers    int32     `json:"stargazers"`
-	ID            string    `json:"id"`
-	URL           string    `json:"url"`
-}
-
-func FetchRepositories() (response[[]GitHubRepository], error) {
-	var zeroValue response[[]GitHubRepository]
-	repos, err := fetchCache[[]GitHubRepository]("github")
+func FetchRepositories() (response[[]models.GitHubRepository], error) {
+	var zeroValue response[[]models.GitHubRepository]
+	repos, err := fetchCache[[]models.GitHubRepository]("github")
 	if err != nil {
 		return zeroValue, nil
 	}
