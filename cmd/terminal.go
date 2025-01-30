@@ -25,19 +25,6 @@ func main() {
 		timber.Fatal(err, "loading .env failed")
 	}
 
-	startSSH()
-}
-
-func setupLogger() {
-	nytime, err := time.LoadLocation("America/New_York")
-	if err != nil {
-		timber.Fatal(err, "failed to load new york timezone")
-	}
-	timber.SetTimezone(nytime)
-	timber.SetTimeFormat("01/02 03:04:05 PM MST")
-}
-
-func startSSH() {
 	homedir, err := os.UserHomeDir()
 	if err != nil {
 		timber.Fatal(err, "getting home directory failed")
@@ -71,4 +58,13 @@ func startSSH() {
 	if err = srv.ListenAndServe(); err != nil && !errors.Is(err, ssh.ErrServerClosed) {
 		timber.Fatal(err, "starting server failed")
 	}
+}
+
+func setupLogger() {
+	nytime, err := time.LoadLocation("America/New_York")
+	if err != nil {
+		timber.Fatal(err, "failed to load new york timezone")
+	}
+	timber.SetTimezone(nytime)
+	timber.SetTimeFormat("01/02 03:04:05 PM MST")
 }
