@@ -6,14 +6,14 @@ require golang.org/x/sys v0.29.0 // indirect
 
 require (
 	github.com/charmbracelet/lipgloss v1.0.0
-	github.com/charmbracelet/ssh v0.0.0-20241211182756-4fe22b0f1b7c
-	github.com/charmbracelet/wish v1.4.4
+	github.com/charmbracelet/ssh v0.0.0-20250128164007-98fd5ae11894
+	github.com/charmbracelet/wish v1.4.6
 	github.com/creack/pty v1.1.24
 	github.com/joho/godotenv v1.5.1
 	github.com/muesli/termenv v0.15.3-0.20240509142007-81b8f94111d5
 	golang.org/x/term v0.28.0
-	pkg.mattglei.ch/lcp-2 v0.0.0-20250124190521-618b55d8271a
-	pkg.mattglei.ch/timber v1.0.0
+	pkg.mattglei.ch/lcp-2 v0.0.0-20250130211319-1ccb7b7fb759
+	pkg.mattglei.ch/timber v1.0.1
 )
 
 require (
@@ -22,9 +22,9 @@ require (
 	github.com/charmbracelet/bubbletea v1.2.4 // indirect
 	github.com/charmbracelet/keygen v0.5.1 // indirect
 	github.com/charmbracelet/log v0.4.0 // indirect
-	github.com/charmbracelet/x/ansi v0.7.0 // indirect
+	github.com/charmbracelet/x/ansi v0.8.0 // indirect
 	github.com/charmbracelet/x/conpty v0.1.0 // indirect
-	github.com/charmbracelet/x/errors v0.0.0-20250107110353-48b574af22a5 // indirect
+	github.com/charmbracelet/x/errors v0.0.0-20250128152640-d9da2a4aec3d // indirect
 	github.com/charmbracelet/x/term v0.2.1 // indirect
 	github.com/charmbracelet/x/termios v0.1.0 // indirect
 	github.com/erikgeiser/coninput v0.0.0-20211004153227-1c3628e74d0f // indirect
@@ -38,7 +38,7 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	golang.org/x/crypto v0.32.0 // indirect
-	golang.org/x/exp v0.0.0-20250106191152-7588d65b2ba8 // indirect
+	golang.org/x/exp v0.0.0-20250128182459-e0ece0dbea4c // indirect
 	golang.org/x/sync v0.10.0 // indirect
 	golang.org/x/text v0.21.0 // indirect
 )
