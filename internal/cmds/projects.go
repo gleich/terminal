@@ -8,6 +8,7 @@ import (
 	"pkg.mattglei.ch/lcp-2/pkg/lcp"
 	"pkg.mattglei.ch/terminal/internal/output"
 	"pkg.mattglei.ch/terminal/internal/util"
+	"pkg.mattglei.ch/timber"
 )
 
 func projects(s ssh.Session, styles output.Styles, client *lcp.Client) {
@@ -17,7 +18,9 @@ func projects(s ssh.Session, styles output.Styles, client *lcp.Client) {
 	)
 	repositories, err := lcp.FetchCache[[]lcp.GitHubRepository](client)
 	if err != nil {
-		fmt.Fprintln(s, styles.Red.Render("failed to load github repositories from lcp"))
+		msg := "failed to load github repositories from lcp"
+		fmt.Fprintln(s, styles.Red.Render(msg))
+		timber.Error(err, msg)
 		return
 	}
 	for i, p := range repositories.Data {

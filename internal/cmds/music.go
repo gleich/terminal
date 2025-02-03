@@ -7,6 +7,7 @@ import (
 	"github.com/charmbracelet/ssh"
 	"pkg.mattglei.ch/lcp-2/pkg/lcp"
 	"pkg.mattglei.ch/terminal/internal/output"
+	"pkg.mattglei.ch/timber"
 )
 
 func music(s ssh.Session, styles output.Styles, client *lcp.Client) {
@@ -16,7 +17,9 @@ func music(s ssh.Session, styles output.Styles, client *lcp.Client) {
 	)
 	cacheData, err := lcp.FetchCache[lcp.AppleMusicCache](client)
 	if err != nil {
-		fmt.Fprintln(s, styles.Red.Render("failed to load data from apple music cache"))
+		msg := "failed to load data from apple music cache"
+		fmt.Fprintln(s, styles.Red.Render(msg))
+		timber.Error(err, msg)
 		return
 	}
 	rowStyle := lipgloss.NewStyle().MaxWidth(40)

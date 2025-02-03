@@ -8,6 +8,7 @@ import (
 	"pkg.mattglei.ch/lcp-2/pkg/lcp"
 	"pkg.mattglei.ch/terminal/internal/output"
 	"pkg.mattglei.ch/terminal/internal/util"
+	"pkg.mattglei.ch/timber"
 )
 
 func workouts(s ssh.Session, styles output.Styles, client *lcp.Client) {
@@ -16,7 +17,9 @@ func workouts(s ssh.Session, styles output.Styles, client *lcp.Client) {
 	var data [][]string
 	activities, err := lcp.FetchCache[[]lcp.StravaActivity](client)
 	if err != nil {
-		fmt.Fprintln(s, styles.Red.Render("failed to load strava activities from lcp"))
+		msg := "failed to load strava activities from lcp"
+		fmt.Fprintln(s, styles.Red.Render(msg))
+		timber.Error(err, msg)
 		return
 	}
 	for i, a := range activities.Data {

@@ -7,6 +7,7 @@ import (
 	"pkg.mattglei.ch/lcp-2/pkg/lcp"
 	"pkg.mattglei.ch/terminal/internal/output"
 	"pkg.mattglei.ch/terminal/internal/util"
+	"pkg.mattglei.ch/timber"
 )
 
 func games(s ssh.Session, styles output.Styles, client *lcp.Client) {
@@ -16,7 +17,9 @@ func games(s ssh.Session, styles output.Styles, client *lcp.Client) {
 	)
 	games, err := lcp.FetchCache[[]lcp.SteamGame](client)
 	if err != nil {
-		fmt.Fprintln(s, styles.Red.Render("failed to load steam games from lcp"))
+		msg := "failed to load steam games from lcp"
+		fmt.Fprintln(s, styles.Red.Render(msg))
+		timber.Error(err, msg)
 		return
 	}
 

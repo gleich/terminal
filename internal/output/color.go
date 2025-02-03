@@ -2,7 +2,6 @@ package output
 
 import (
 	"fmt"
-	"log"
 	"os"
 	"strings"
 
@@ -10,6 +9,7 @@ import (
 	"github.com/charmbracelet/ssh"
 	"github.com/creack/pty"
 	"github.com/muesli/termenv"
+	"pkg.mattglei.ch/timber"
 )
 
 type Styles struct {
@@ -73,7 +73,7 @@ func outputFromSession(sess ssh.Session) *termenv.Output {
 	sshPty, _, _ := sess.Pty()
 	_, tty, err := pty.Open()
 	if err != nil {
-		log.Fatal(err)
+		timber.Fatal(err)
 	}
 	o := &sshOutput{
 		Session: sess,
