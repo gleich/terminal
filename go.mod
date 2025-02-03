@@ -1,6 +1,6 @@
 module pkg.mattglei.ch/terminal
 
-go 1.23
+go 1.23.5
 
 require golang.org/x/sys v0.29.0 // indirect
 
@@ -12,7 +12,7 @@ require (
 	github.com/joho/godotenv v1.5.1
 	github.com/muesli/termenv v0.15.3-0.20240509142007-81b8f94111d5
 	golang.org/x/term v0.28.0
-	pkg.mattglei.ch/lcp-2 v0.0.0-20250130211319-1ccb7b7fb759
+	pkg.mattglei.ch/lcp-2 v0.0.0-20250203161213-22438fc099d9
 	pkg.mattglei.ch/timber v1.0.1
 )
 

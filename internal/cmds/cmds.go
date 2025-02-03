@@ -7,11 +7,12 @@ import (
 
 	"github.com/charmbracelet/ssh"
 	"golang.org/x/term"
+	"pkg.mattglei.ch/lcp-2/pkg/lcp"
 	"pkg.mattglei.ch/terminal/internal/output"
 	"pkg.mattglei.ch/timber"
 )
 
-func Terminal(s ssh.Session, styles output.Styles) {
+func Terminal(s ssh.Session, styles output.Styles, client *lcp.Client) {
 	prefix := styles.Green.Render("λ ")
 	terminal := term.NewTerminal(s, prefix)
 
@@ -38,13 +39,13 @@ func Terminal(s ssh.Session, styles output.Styles) {
 		case "about":
 			about(s, styles)
 		case "workouts":
-			workouts(s, styles)
+			workouts(s, styles, client)
 		case "projects":
-			projects(s, styles)
+			projects(s, styles, client)
 		case "games":
-			games(s, styles)
+			games(s, styles, client)
 		case "music":
-			music(s, styles)
+			music(s, styles, client)
 		default:
 			fmt.Fprintf(
 				s,

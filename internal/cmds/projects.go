@@ -5,17 +5,17 @@ import (
 
 	"github.com/charmbracelet/lipgloss"
 	"github.com/charmbracelet/ssh"
-	"pkg.mattglei.ch/terminal/internal/lcp"
+	"pkg.mattglei.ch/lcp-2/pkg/lcp"
 	"pkg.mattglei.ch/terminal/internal/output"
 	"pkg.mattglei.ch/terminal/internal/util"
 )
 
-func projects(s ssh.Session, styles output.Styles) {
+func projects(s ssh.Session, styles output.Styles, client *lcp.Client) {
 	var (
 		headers = []string{"", "NAME", "DESCRIPTION", "UPDATED", "LANGUAGE", "GITHUB LINK"}
 		data    [][]string
 	)
-	repositories, err := lcp.FetchRepositories()
+	repositories, err := lcp.FetchCache[[]lcp.GitHubRepository](client)
 	if err != nil {
 		fmt.Fprintln(s, styles.Red.Render("failed to load github repositories from lcp"))
 		return

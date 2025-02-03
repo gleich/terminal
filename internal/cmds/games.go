@@ -4,17 +4,17 @@ import (
 	"fmt"
 
 	"github.com/charmbracelet/ssh"
-	"pkg.mattglei.ch/terminal/internal/lcp"
+	"pkg.mattglei.ch/lcp-2/pkg/lcp"
 	"pkg.mattglei.ch/terminal/internal/output"
 	"pkg.mattglei.ch/terminal/internal/util"
 )
 
-func games(s ssh.Session, styles output.Styles) {
+func games(s ssh.Session, styles output.Styles, client *lcp.Client) {
 	var (
 		headers = []string{"", "NAME", "ACHIEVEMENT PROGRESS", "TIME IN GAME", "STEAM LINK"}
 		data    [][]string
 	)
-	games, err := lcp.FetchGames()
+	games, err := lcp.FetchCache[[]lcp.SteamGame](client)
 	if err != nil {
 		fmt.Fprintln(s, styles.Red.Render("failed to load steam games from lcp"))
 		return

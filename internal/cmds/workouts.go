@@ -5,16 +5,16 @@ import (
 
 	"github.com/charmbracelet/lipgloss"
 	"github.com/charmbracelet/ssh"
-	"pkg.mattglei.ch/terminal/internal/lcp"
+	"pkg.mattglei.ch/lcp-2/pkg/lcp"
 	"pkg.mattglei.ch/terminal/internal/output"
 	"pkg.mattglei.ch/terminal/internal/util"
 )
 
-func workouts(s ssh.Session, styles output.Styles) {
+func workouts(s ssh.Session, styles output.Styles, client *lcp.Client) {
 	headers := []string{"", "NAME", "STARTED", "DURATION", "DISTANCE", "TYPE", "AVG. HEART RATE"}
 
 	var data [][]string
-	activities, err := lcp.FetchActivities()
+	activities, err := lcp.FetchCache[[]lcp.StravaActivity](client)
 	if err != nil {
 		fmt.Fprintln(s, styles.Red.Render("failed to load strava activities from lcp"))
 		return

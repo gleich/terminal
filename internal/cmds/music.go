@@ -5,16 +5,16 @@ import (
 
 	"github.com/charmbracelet/lipgloss"
 	"github.com/charmbracelet/ssh"
-	"pkg.mattglei.ch/terminal/internal/lcp"
+	"pkg.mattglei.ch/lcp-2/pkg/lcp"
 	"pkg.mattglei.ch/terminal/internal/output"
 )
 
-func music(s ssh.Session, styles output.Styles) {
+func music(s ssh.Session, styles output.Styles, client *lcp.Client) {
 	var (
 		headers = []string{"", "NAME", "ARTIST"}
 		data    [][]string
 	)
-	cacheData, err := lcp.FetchAppleMusicCache()
+	cacheData, err := lcp.FetchCache[lcp.AppleMusicCache](client)
 	if err != nil {
 		fmt.Fprintln(s, styles.Red.Render("failed to load data from apple music cache"))
 		return

@@ -12,6 +12,7 @@ import (
 	"github.com/charmbracelet/wish"
 	"github.com/charmbracelet/wish/activeterm"
 	"github.com/joho/godotenv"
+	"pkg.mattglei.ch/lcp-2/pkg/lcp"
 	"pkg.mattglei.ch/terminal/internal/cmds"
 	"pkg.mattglei.ch/terminal/internal/output"
 	"pkg.mattglei.ch/timber"
@@ -30,6 +31,8 @@ func main() {
 		timber.Fatal(err, "getting home directory failed")
 	}
 
+	client := lcp.Client{Token: os.Getenv("LCP_TOKEN")}
+
 	srv, err := wish.NewServer(
 		wish.WithAddress(net.JoinHostPort("0.0.0.0", "22")),
 		wish.WithHostKeyPath(filepath.Join(homedir, ".ssh", "id_rsa")),
@@ -43,7 +46,7 @@ func main() {
 				if os.Getenv("OUTPUT_WELCOME") == "true" {
 					output.Welcome(s, styles)
 				}
-				cmds.Terminal(s, styles)
+				cmds.Terminal(s, styles, &client)
 				timber.Done(
 					fmt.Sprintf("logout from user \"%s\". spent %s", s.User(), time.Since(ct)),
 				)
