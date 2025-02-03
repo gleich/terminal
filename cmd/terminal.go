@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"io/fs"
 	"net"
 	"os"
 	"path/filepath"
@@ -21,9 +22,11 @@ import (
 func main() {
 	setupLogger()
 
-	err := godotenv.Load()
-	if err != nil {
-		timber.Fatal(err, "loading .env failed")
+	if _, err := os.Stat(".env"); !errors.Is(err, fs.ErrNotExist) {
+		err := godotenv.Load()
+		if err != nil {
+			timber.Fatal(err, "loading .env failed")
+		}
 	}
 
 	homedir, err := os.UserHomeDir()

@@ -19,6 +19,5 @@ COPY --from=build /bin/terminal /bin/terminal
 COPY --from=build /src/entrypoint.sh /src/entrypoint.sh
 COPY --from=build /src/gotty/.gotty /root/.gotty
 COPY --from=build /src/gotty/index.html /src/gotty/index.html
-RUN touch .env
 
 CMD ["sh", "/src/entrypoint.sh"]
