@@ -11,12 +11,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          echo ${{ secrets.GHCR_TOKEN }} | docker login ghcr.io -u gleich --password-stdin
-          docker build -t ghcr.io/gleich/terminal .
-          docker push ghcr.io/gleich/terminal
+          echo ${{ secrets.REGISTRY_PASSWORD }} | docker login docker.mattglei.ch -u admin --password-stdin
+          docker build -t docker.mattglei.ch/terminal .
+          docker push docker.mattglei.ch/terminal
       - uses: caprover/deploy-from-github@v1.1.2
         with:
           server: https://dev.mattglei.ch
           app: terminal
           token: '${{ secrets.CAPROVER_APP_TOKEN }}'
-          image: ghcr.io/gleich/terminal
+          image: docker.mattglei.ch/terminal
