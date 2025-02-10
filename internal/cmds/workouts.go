@@ -33,6 +33,11 @@ func workouts(s ssh.Session, styles output.Styles, client *lcp.Client) {
 		case "":
 			a.SportType = "Workout"
 		}
+		distance := fmt.Sprintf("%.2f mi [%.2f km]", a.Distance*0.000621371, a.Distance*0.001)
+		if a.SportType == "WeightTraining" {
+			distance = "N/A"
+		}
+
 		data = append(
 			data,
 			[]string{
@@ -40,7 +45,7 @@ func workouts(s ssh.Session, styles output.Styles, client *lcp.Client) {
 				a.Name,
 				util.RenderExactFromNow(a.StartDate),
 				util.RenderDuration(int(a.MovingTime)),
-				fmt.Sprintf("%.2f mi [%.2f km]", a.Distance*0.000621371, a.Distance*0.001),
+				distance,
 				a.SportType,
 				fmt.Sprintf("%.2f bpm", a.AverageHeartrate),
 			},
