@@ -13,10 +13,10 @@ import (
 	"github.com/charmbracelet/wish"
 	"github.com/charmbracelet/wish/activeterm"
 	"github.com/joho/godotenv"
-	"pkg.mattglei.ch/lcp-2/pkg/lcp"
-	"pkg.mattglei.ch/terminal/internal/cmds"
-	"pkg.mattglei.ch/terminal/internal/output"
-	"pkg.mattglei.ch/timber"
+	"go.mattglei.ch/lcp-2/pkg/lcp"
+	"go.mattglei.ch/terminal/internal/cmds"
+	"go.mattglei.ch/terminal/internal/output"
+	"go.mattglei.ch/timber"
 )
 
 func main() {

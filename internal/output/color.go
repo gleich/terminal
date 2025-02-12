@@ -9,7 +9,7 @@ import (
 	"github.com/charmbracelet/ssh"
 	"github.com/creack/pty"
 	"github.com/muesli/termenv"
-	"pkg.mattglei.ch/timber"
+	"go.mattglei.ch/timber"
 )
 
 type Styles struct {

@@ -6,7 +6,7 @@ import (
 
 	"github.com/charmbracelet/lipgloss"
 	"github.com/charmbracelet/ssh"
-	"pkg.mattglei.ch/terminal/internal/util"
+	"go.mattglei.ch/terminal/internal/util"
 )
 
 func LiveFrom(s ssh.Session, styles Styles, table string, updated time.Time) {

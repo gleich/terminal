@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/charmbracelet/ssh"
-	"pkg.mattglei.ch/terminal/internal/output"
+	"go.mattglei.ch/terminal/internal/output"
 )
 
 func about(s ssh.Session, styles output.Styles) {

@@ -1,4 +1,4 @@
-module pkg.mattglei.ch/terminal
+module go.mattglei.ch/terminal
 
 go 1.23.6
 
@@ -11,9 +11,9 @@ require (
 	github.com/creack/pty v1.1.24
 	github.com/joho/godotenv v1.5.1
 	github.com/muesli/termenv v0.15.3-0.20240509142007-81b8f94111d5
+	go.mattglei.ch/lcp-2 v0.0.0-20250212055641-61e0541cdb87
+	go.mattglei.ch/timber v1.1.1
 	golang.org/x/term v0.29.0
-	pkg.mattglei.ch/lcp-2 v0.0.0-20250208065535-bd9d1807c533
-	pkg.mattglei.ch/timber v1.1.0
 )
 
 require (

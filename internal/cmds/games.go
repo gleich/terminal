@@ -4,10 +4,10 @@ import (
 	"fmt"
 
 	"github.com/charmbracelet/ssh"
-	"pkg.mattglei.ch/lcp-2/pkg/lcp"
-	"pkg.mattglei.ch/terminal/internal/output"
-	"pkg.mattglei.ch/terminal/internal/util"
-	"pkg.mattglei.ch/timber"
+	"go.mattglei.ch/lcp-2/pkg/lcp"
+	"go.mattglei.ch/terminal/internal/output"
+	"go.mattglei.ch/terminal/internal/util"
+	"go.mattglei.ch/timber"
 )
 
 func games(s ssh.Session, styles output.Styles, client *lcp.Client) {
