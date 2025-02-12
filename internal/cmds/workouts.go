@@ -34,7 +34,7 @@ func workouts(s ssh.Session, styles output.Styles, client *lcp.Client) {
 			a.SportType = "Workout"
 		}
 		distance := fmt.Sprintf("%.2f mi [%.2f km]", a.Distance*0.000621371, a.Distance*0.001)
-		if a.SportType == "WeightTraining" {
+		if a.SportType == "Weight Training" {
 			distance = "N/A"
 		}
 
