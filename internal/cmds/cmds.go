@@ -49,7 +49,7 @@ func Terminal(s ssh.Session, styles output.Styles, client *lcp.Client) {
 		default:
 			fmt.Fprintf(
 				s,
-				"\nInvalid command '%s'. Type `help` to see available commands.\n\n",
+				"\nInvalid command '%s'. Type 'help' to see available commands.\n\n",
 				cmd,
 			)
 		}
