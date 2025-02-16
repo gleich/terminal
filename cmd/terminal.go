@@ -71,6 +71,6 @@ func setupLogger() {
 	if err != nil {
 		timber.Fatal(err, "failed to load new york timezone")
 	}
-	timber.SetTimezone(nytime)
-	timber.SetTimeFormat("01/02 03:04:05 PM MST")
+	timber.Timezone(nytime)
+	timber.TimeFormat("01/02 03:04:05 PM MST")
 }

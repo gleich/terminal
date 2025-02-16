@@ -61,8 +61,8 @@ github.com/stretchr/testify v1.10.0 h1:Xv5erBjTwe/5IxqUQTdXv5kgmIvbHo3QQyRwhJsOf
 github.com/stretchr/testify v1.10.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf8C91i36aY=
 go.mattglei.ch/lcp-2 v0.0.0-20250213050337-cf1eebcbea3d h1:IVppNW0CvVYYFKJbNFgF6u5S5I6yslBJrqALwLlKQ5Q=
 go.mattglei.ch/lcp-2 v0.0.0-20250213050337-cf1eebcbea3d/go.mod h1:aq+RH8zZTRoHXbPY62Q2jxmNXa4kg/6gLPMch5W/LtE=
-go.mattglei.ch/timber v1.1.2 h1:MgHD26T0CaAnnboy9oHsgBsNq/wnAvwtJLt+k7Qo7/A=
-go.mattglei.ch/timber v1.1.2/go.mod h1:jfUi+mgkY0z0tmMZpawzJ3gih1xcPBXk1ZvmTKQsb4E=
+go.mattglei.ch/timber v1.2.0 h1:1zxu90aec0PWqXuNKgdwOiwskoWO8FCALEQbHuCpXSU=
+go.mattglei.ch/timber v1.2.0/go.mod h1:jfUi+mgkY0z0tmMZpawzJ3gih1xcPBXk1ZvmTKQsb4E=
 golang.org/x/crypto v0.33.0 h1:IOBPskki6Lysi0lo9qQvbxiQ+FvsCC/YWOecCHAixus=
 golang.org/x/crypto v0.33.0/go.mod h1:bVdXmD7IV/4GdElGPozy6U7lWdRXA4qyRVGJV57uQ5M=
 golang.org/x/exp v0.0.0-20250210185358-939b2ce775ac h1:l5+whBCLH3iH2ZNHYLbAe58bo7yrN4mVcnkHDYz5vvs=
