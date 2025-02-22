@@ -43,7 +43,7 @@ func main() {
 			return func(s ssh.Session) {
 				ct := time.Now()
 				timber.Info(
-					fmt.Sprintf("login from user \"%s\" started connection to terminal", s.User()),
+					fmt.Sprintf("login from user \"%s\" started connection", s.User()),
 				)
 				styles := output.LoadStyles(s)
 				if os.Getenv("OUTPUT_WELCOME") == "true" {

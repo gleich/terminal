@@ -10,11 +10,13 @@ func Help(styles Styles) string {
 	box := lipgloss.NewStyle().
 		Border(lipgloss.NormalBorder()).
 		BorderForeground(styles.Grey.GetForeground()).
-		Padding(0, 1).
+		Padding(1, 2).
 		BorderTop(true).
 		BorderLeft(true).
 		BorderRight(true).
-		BorderBottom(true)
+		BorderBottom(true).
+		Margin(1).
+		MarginRight(0)
 	cmdStyle := styles.Green.Bold(true)
 	return box.Render(fmt.Sprintf(`%s     a little about myself
 %s  my recent workouts from Strava
