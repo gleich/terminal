@@ -27,7 +27,7 @@ func LoadStyles(s ssh.Session) Styles {
 	return Styles{
 		Renderer: r,
 		Blue:     r.NewStyle().Foreground(lipgloss.Color("#2B95FF")),
-		Green:    r.NewStyle().Foreground(lipgloss.Color("#30CE75")),
+		Green:    r.NewStyle().Foreground(lipgloss.Color("#98c379")),
 		Grey:     r.NewStyle().Foreground(lipgloss.Color("#424242")),
 		Red:      r.NewStyle().Foreground(lipgloss.Color("#ff4747")),
 	}
