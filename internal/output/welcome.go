@@ -13,7 +13,7 @@ func Welcome(s ssh.Session, colors Styles) {
 	TypewriterAnimation(
 		s,
 		50*time.Millisecond,
-		" CONNECTION SUCCESSFULLY ESTABLISHED TO TERMINAL",
+		" CONNECTION SUCCESSFULLY ESTABLISHED",
 	)
 	fmt.Fprintln(s)
 	fmt.Fprintln(s)
