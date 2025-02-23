@@ -67,10 +67,10 @@ func main() {
 }
 
 func setupLogger() {
-	nytime, err := time.LoadLocation("America/New_York")
+	ny, err := time.LoadLocation("America/New_York")
 	if err != nil {
 		timber.Fatal(err, "failed to load new york timezone")
 	}
-	timber.Timezone(nytime)
+	timber.Timezone(ny)
 	timber.TimeFormat("01/02 03:04:05 PM MST")
 }
