@@ -51,7 +51,7 @@ func main() {
 				}
 				cmds.Terminal(s, styles, &client)
 				timber.Done(
-					fmt.Sprintf("logout from user \"%s\". spent %s", s.User(), time.Since(ct)),
+					fmt.Sprintf("logout from user \"%s\"; spent %s", s.User(), time.Since(ct)),
 				)
 			}
 		}, activeterm.Middleware()),
