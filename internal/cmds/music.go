@@ -3,7 +3,6 @@ package cmds
 import (
 	"fmt"
 
-	"github.com/charmbracelet/lipgloss"
 	"github.com/charmbracelet/ssh"
 	"go.mattglei.ch/lcp-2/pkg/lcp"
 	"go.mattglei.ch/terminal/internal/output"
@@ -11,10 +10,6 @@ import (
 )
 
 func music(s ssh.Session, styles output.Styles, client *lcp.Client) {
-	var (
-		headers = []string{"", "NAME", "ARTIST"}
-		data    [][]string
-	)
 	cacheData, err := lcp.FetchCache[lcp.AppleMusicCache](client)
 	if err != nil {
 		msg := "failed to load data from apple music cache"
@@ -22,29 +17,25 @@ func music(s ssh.Session, styles output.Styles, client *lcp.Client) {
 		timber.Error(err, msg)
 		return
 	}
-	rowStyle := lipgloss.NewStyle().MaxWidth(40)
-	for i, s := range cacheData.Data.RecentlyPlayed {
-		data = append(
-			data,
-			[]string{
-				fmt.Sprint(i + 1),
-				rowStyle.Render(s.Track),
-				rowStyle.Render(s.Artist),
-			},
-		)
-	}
 
-	table := output.Table(styles).Headers(headers...).Rows(data...).Render()
 	fmt.Fprintln(s)
 	fmt.Fprintln(
 		s,
 		styles.Renderer.NewStyle().
-			Width(lipgloss.Width(table)+10).
+			Width(output.MAX_WIDTH).
 			Render("One of my favorite things in this world is music. Here are a few of the playlists I've built up over the last few years and my recently played songs. I am into everything from electronic to bossa nova. A few of my favorite artists are The Smiths, Coldplay, Daft Punk, and Earth Wind & Fire."),
 	)
 
-	fmt.Fprintln(s, "\nHere are 10 of my most recently played songs from Apple Music:")
-	fmt.Fprintln(s, table)
-	output.LiveFrom(s, styles, table, cacheData.Updated)
+	fmt.Fprintln(s, "\nHere are 5 of my most recently played songs from Apple Music:")
+
+	for i, song := range cacheData.Data.RecentlyPlayed[5:] {
+		fmt.Fprintf(
+			s,
+			"  %d. %s by %s\n",
+			i+1,
+			styles.Blue.Bold(true).Render(song.Track),
+			song.Artist,
+		)
+	}
 	fmt.Fprintln(s)
 }
