@@ -21,7 +21,7 @@ func workouts(s ssh.Session, styles output.Styles, client *lcp.Client) {
 
 	fmt.Fprintln(
 		s,
-		"\nOne of my favorite things in the world is staying active and enjoying the outdoors. I grew up in New Hampshire hiking, biking, snowshoeing, and traveling with my family. Out of all of those things I especially love cycling mainly through gravel cycling, road cycling, and mountain biking. Below are 5 of my most recent Strava and Hevy workouts:",
+		"\nOne of my favorite things in the world is staying active and enjoying the outdoors. I grew up in New Hampshire hiking, biking, snowshoeing, and traveling with my family. Out of all of those things I especially love cycling mainly through gravel cycling, road cycling, and mountain biking. Recently I've been getting into lifting which has been a ton of fun. Below are 5 of my most recent Strava and Hevy workouts:",
 	)
 	for i, a := range activities.Data[:3] {
 		switch a.SportType {
