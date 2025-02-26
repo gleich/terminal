@@ -33,7 +33,7 @@ func music(s ssh.Session, styles output.Styles, client *lcp.Client) {
 			s,
 			"  %d. %s by %s\n",
 			i+1,
-			styles.Blue.Bold(true).Render(song.Track),
+			styles.Green.Bold(true).Render(song.Track),
 			song.Artist,
 		)
 	}
