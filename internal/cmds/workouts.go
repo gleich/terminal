@@ -6,6 +6,7 @@ import (
 	"github.com/charmbracelet/ssh"
 	"go.mattglei.ch/lcp-2/pkg/lcp"
 	"go.mattglei.ch/terminal/internal/output"
+	"go.mattglei.ch/terminal/internal/util"
 	"go.mattglei.ch/timber"
 )
 
@@ -20,9 +21,9 @@ func workouts(s ssh.Session, styles output.Styles, client *lcp.Client) {
 
 	fmt.Fprintln(
 		s,
-		"\nOne of my favorite things in the world is staying active and enjoying the outdoors. I grew up in New Hampshire hiking, biking, snowshoeing, and traveling with my family. Out of all of those things I especially love cycling mainly through gravel cycling, road cycling, and mountain biking. Below are some of my most recent Strava activities:",
+		"\nOne of my favorite things in the world is staying active and enjoying the outdoors. I grew up in New Hampshire hiking, biking, snowshoeing, and traveling with my family. Out of all of those things I especially love cycling mainly through gravel cycling, road cycling, and mountain biking. Below are 5 of my most recent Strava and Hevy workouts:",
 	)
-	for i, a := range activities.Data {
+	for i, a := range activities.Data[:3] {
 		switch a.SportType {
 		case "GravelRide":
 			a.SportType = "Gravel Ride"
@@ -34,6 +35,7 @@ func workouts(s ssh.Session, styles output.Styles, client *lcp.Client) {
 			a.SportType = "Workout"
 		}
 
+		fmt.Fprintln(s)
 		fmt.Fprintf(
 			s,
 			"%d. %s %s\n",
@@ -41,5 +43,32 @@ func workouts(s ssh.Session, styles output.Styles, client *lcp.Client) {
 			styles.Green.Bold(true).Render(a.Name),
 			styles.Grey.Render(fmt.Sprintf("[%s]", a.Platform)),
 		)
+		fmt.Fprintf(s, "    Started: %s\n", util.RenderExactFromNow(a.StartDate))
+		fmt.Fprintf(s, "    Duration: %s\n", util.RenderDuration(int(a.MovingTime)))
+		if a.Platform == "strava" {
+			fmt.Fprintf(s, "    Type: %s\n", a.SportType)
+			if a.Distance != 0 {
+				fmt.Fprintf(
+					s,
+					"    Distance: %s\n",
+					fmt.Sprintf("%.2f mi [%.2f km]", a.Distance*0.000621371, a.Distance*0.001),
+				)
+			}
+			if a.AverageHeartrate != 0 {
+				fmt.Fprintf(
+					s,
+					"    Avg. Heartrate: %s\n",
+					fmt.Sprintf("%.2f bpm", a.AverageHeartrate),
+				)
+			}
+		} else {
+			fmt.Fprintln(s, "    Exercises:")
+			for i, exercise := range a.HevyExercises {
+				fmt.Fprintf(s, "        %s (%d/%d)\n", styles.Blue.Render(exercise.Title), i+1, len(a.HevyExercises))
+				for j, set := range exercise.Sets {
+					fmt.Fprintf(s, "            [set %d] %.1f lbs × %d reps\n", j+1, set.WeightKg*2.2046226218, set.Reps)
+				}
+			}
+		}
 	}
 }
