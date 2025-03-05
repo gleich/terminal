@@ -2,7 +2,7 @@ module go.mattglei.ch/terminal
 
 go 1.24
 
-require golang.org/x/sys v0.30.0 // indirect
+require golang.org/x/sys v0.31.0 // indirect
 
 require (
 	github.com/charmbracelet/lipgloss v1.0.0
@@ -11,9 +11,9 @@ require (
 	github.com/creack/pty v1.1.24
 	github.com/joho/godotenv v1.5.1
 	github.com/muesli/termenv v0.16.0
-	go.mattglei.ch/lcp-2 v0.0.0-20250226172248-9752a37c9e61
+	go.mattglei.ch/lcp-2 v0.0.0-20250305203935-42dc4566c51e
 	go.mattglei.ch/timber v1.2.2
-	golang.org/x/term v0.29.0
+	golang.org/x/term v0.30.0
 )
 
 require (
@@ -24,7 +24,7 @@ require (
 	github.com/charmbracelet/log v0.4.0 // indirect
 	github.com/charmbracelet/x/ansi v0.8.0 // indirect
 	github.com/charmbracelet/x/conpty v0.1.0 // indirect
-	github.com/charmbracelet/x/errors v0.0.0-20250226164017-59292a315e58 // indirect
+	github.com/charmbracelet/x/errors v0.0.0-20250303111204-ce812b082f54 // indirect
 	github.com/charmbracelet/x/term v0.2.1 // indirect
 	github.com/charmbracelet/x/termios v0.1.1 // indirect
 	github.com/erikgeiser/coninput v0.0.0-20211004153227-1c3628e74d0f // indirect
@@ -36,8 +36,8 @@ require (
 	github.com/muesli/ansi v0.0.0-20230316100256-276c6243b2f6 // indirect
 	github.com/muesli/cancelreader v0.2.2 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
-	golang.org/x/crypto v0.35.0 // indirect
-	golang.org/x/exp v0.0.0-20250218142911-aa4b98e5adaa // indirect
-	golang.org/x/sync v0.11.0 // indirect
-	golang.org/x/text v0.22.0 // indirect
+	golang.org/x/crypto v0.36.0 // indirect
+	golang.org/x/exp v0.0.0-20250305212735-054e65f0b394 // indirect
+	golang.org/x/sync v0.12.0 // indirect
+	golang.org/x/text v0.23.0 // indirect
 )
