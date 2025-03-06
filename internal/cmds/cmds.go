@@ -46,6 +46,8 @@ func Terminal(s ssh.Session, styles output.Styles, client *lcp.Client) {
 			games(s, styles, client)
 		case "music":
 			music(s, styles, client)
+		case "niranth":
+			niranth(s, styles)
 		default:
 			fmt.Fprintf(
 				s,
