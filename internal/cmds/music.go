@@ -23,7 +23,7 @@ func music(s ssh.Session, styles output.Styles, client *lcp.Client) {
 		s,
 		styles.Renderer.NewStyle().
 			Width(output.MAX_WIDTH).
-			Render("One of my favorite things in this world is music. Here are a few of the playlists I've built up over the last few years and my recently played songs. I am into everything from electronic to bossa nova. A few of my favorite artists are The Smiths, Coldplay, Daft Punk, and Earth Wind & Fire."),
+			Render("I love a lot of different types of music ranging from electronic to jazz. A few of my favorite artists are Daft Punk, The Smiths, Eagles, Mac DeMarco, Fleetwood Mac, Oasis, and Deftones."),
 	)
 
 	fmt.Fprintln(s, "\nHere are 5 of my most recently played songs from Apple Music:")

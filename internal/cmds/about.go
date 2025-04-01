@@ -12,7 +12,7 @@ func about(s ssh.Session, styles output.Styles) {
 	fmt.Fprintln(
 		s,
 		styles.Renderer.NewStyle().Width(output.MAX_WIDTH).Render(fmt.Sprintf(
-			"\nHey! I'm Matt Gleich, a college student attending the Rochester Institute of Technology (RIT). I'm going into my 3rd year studying computer science there and in my free time I really enjoy cycling (gravel, road, & mountain bike) and photography. This summer I will be working at KCF Technologies as a DevOps intern. Want to get in touch? Feel free to shoot me an email over at email@mattglei.ch. More of my professional work is detailed in my résumé [%s].\n",
+			"\nI'm a third-year Computer Science student at the Rochester Institute of Technology (RIT). This website serves as a portfolio showcasing some of my projects, work experience, and personal interests. I am committed to applying my technical skills to develop practical solutions and consistently strive to expand my expertise. If you'd like to discuss a project or explore potential opportunities, please contact me at mail@mattglei.ch. Additional details about my professional work are in my résumé [%s].\n",
 			linkStyle.Render("https://mattglei.ch/resume.pdf"),
 		)),
 	)
