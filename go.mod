@@ -11,7 +11,7 @@ require (
 	github.com/creack/pty v1.1.24
 	github.com/joho/godotenv v1.5.1
 	github.com/muesli/termenv v0.16.0
-	go.mattglei.ch/lcp-2 v0.0.0-20250407195212-5657e4c0bb74
+	go.mattglei.ch/lcp-2 v0.0.0-20250421032752-2a20efda0e60
 	go.mattglei.ch/timber v1.2.4
 	golang.org/x/term v0.31.0
 )
@@ -26,7 +26,7 @@ require (
 	github.com/charmbracelet/x/ansi v0.8.0 // indirect
 	github.com/charmbracelet/x/cellbuf v0.0.13 // indirect
 	github.com/charmbracelet/x/conpty v0.1.0 // indirect
-	github.com/charmbracelet/x/errors v0.0.0-20250407102404-92fd13048199 // indirect
+	github.com/charmbracelet/x/errors v0.0.0-20250420095733-3f4ae29caa07 // indirect
 	github.com/charmbracelet/x/term v0.2.1 // indirect
 	github.com/charmbracelet/x/termios v0.1.1 // indirect
 	github.com/erikgeiser/coninput v0.0.0-20211004153227-1c3628e74d0f // indirect
