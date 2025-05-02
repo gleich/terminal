@@ -5,7 +5,7 @@ import (
 
 	"github.com/charmbracelet/lipgloss"
 	"github.com/charmbracelet/ssh"
-	"go.mattglei.ch/lcp-2/pkg/lcp"
+	"go.mattglei.ch/lcp/pkg/lcp"
 	"go.mattglei.ch/terminal/internal/output"
 	"go.mattglei.ch/terminal/internal/util"
 	"go.mattglei.ch/timber"
