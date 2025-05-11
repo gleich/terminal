@@ -1,8 +1,6 @@
 module go.mattglei.ch/terminal
 
-go 1.24.2
-
-toolchain go1.24.3
+go 1.24.3
 
 require golang.org/x/sys v0.33.0 // indirect
 
