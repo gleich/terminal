@@ -11,7 +11,7 @@ require (
 	github.com/creack/pty v1.1.24
 	github.com/joho/godotenv v1.5.1
 	github.com/muesli/termenv v0.16.0
-	go.mattglei.ch/lcp v0.0.0-20250504014742-086c27f34574
+	go.mattglei.ch/lcp v1.0.0
 	go.mattglei.ch/timber v1.2.4
 	golang.org/x/term v0.32.0
 )
