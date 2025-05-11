@@ -16,7 +16,7 @@ jobs:
           docker push docker.mattglei.ch/terminal
       - uses: caprover/deploy-from-github@v1.1.2
         with:
-          server: https://dev.mattglei.ch
+          server: https://lab.mattglei.ch
           app: terminal
           token: '${{ secrets.CAPROVER_APP_TOKEN }}'
           image: docker.mattglei.ch/terminal
