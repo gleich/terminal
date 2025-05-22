@@ -21,7 +21,7 @@ func Welcome(s ssh.Session, colors Styles) {
 		s,
 		50*time.Millisecond,
 		colors.Green.Render(
-			fmt.Sprintf("Welcome to Matt Gleich's personal terminal, %s!", s.User()),
+			fmt.Sprintf("Welcome to Matt Gleich's personal terminal."),
 		),
 	)
 	fmt.Fprintln(s)
