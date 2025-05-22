@@ -10,7 +10,7 @@ func Help(styles Styles) string {
 	box := lipgloss.NewStyle().
 		Border(lipgloss.NormalBorder()).
 		BorderForeground(styles.Grey.GetForeground()).
-		Padding(1, 2).
+		Padding(1, 3).
 		BorderTop(true).
 		BorderLeft(true).
 		BorderRight(true).
@@ -19,7 +19,7 @@ func Help(styles Styles) string {
 		MarginRight(0)
 	cmdStyle := styles.Green.Bold(true)
 	return box.Render(fmt.Sprintf(`%s     a little about myself
-%s  my recent workouts from Strava
+%s  my recent workouts from Strava/Hevy
 %s  recent projects I've worked on from GitHub
 %s     games I've recently played on Steam
 %s     music I've listened to recently
