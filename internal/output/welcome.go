@@ -20,9 +20,7 @@ func Welcome(s ssh.Session, colors Styles) {
 	TypewriterAnimation(
 		s,
 		50*time.Millisecond,
-		colors.Green.Render(
-			fmt.Sprintf("Welcome to Matt Gleich's personal terminal."),
-		),
+		colors.Green.Render("Welcome to Matt Gleich's personal terminal."),
 	)
 	fmt.Fprintln(s)
 	fmt.Fprintln(s, Help(colors))
