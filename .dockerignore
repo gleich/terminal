@@ -1,0 +1,8 @@
+# 1) ignore all files under website/
+website/*
+
+# 2) but don’t ignore the build folder itself
+!website/build/
+
+# 3) and don’t ignore anything inside it
+!website/build/**/*

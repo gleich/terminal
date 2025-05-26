@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/fs"
 	"net"
+	"net/http"
 	"os"
 	"path/filepath"
 	"time"
@@ -36,8 +37,9 @@ func main() {
 
 	client := lcp.Client{Token: os.Getenv("LCP_TOKEN")}
 
+	sshPort := "22"
 	srv, err := wish.NewServer(
-		wish.WithAddress(net.JoinHostPort("0.0.0.0", "22")),
+		wish.WithAddress(net.JoinHostPort("0.0.0.0", sshPort)),
 		wish.WithHostKeyPath(filepath.Join(homedir, ".ssh", "id_rsa")),
 		wish.WithMiddleware(func(next ssh.Handler) ssh.Handler {
 			return func(s ssh.Session) {
@@ -60,7 +62,19 @@ func main() {
 		timber.Fatal(err, "creating server failed")
 	}
 
-	timber.Info("starting ssh server")
+	go func() {
+		fs := http.FileServer(http.Dir("./website/build"))
+		http.Handle("/", fs)
+
+		httpPort := ":8888"
+		timber.Info("starting http server on port", httpPort)
+		err := http.ListenAndServe(httpPort, nil)
+		if err != nil {
+			timber.Fatal(err, "failed to start http server")
+		}
+	}()
+
+	timber.Info("starting ssh server on port", sshPort)
 	if err = srv.ListenAndServe(); err != nil && !errors.Is(err, ssh.ErrServerClosed) {
 		timber.Fatal(err, "starting server failed")
 	}
