@@ -24,8 +24,8 @@ github.com/charmbracelet/x/cellbuf v0.0.13 h1:/KBBKHuVRbq1lYx5BzEHBAFBP8VcQzJejZ
 github.com/charmbracelet/x/cellbuf v0.0.13/go.mod h1:xe0nKWGd3eJgtqZRaN9RjMtK7xUYchjzPr7q6kcvCCs=
 github.com/charmbracelet/x/conpty v0.1.0 h1:4zc8KaIcbiL4mghEON8D72agYtSeIgq8FSThSPQIb+U=
 github.com/charmbracelet/x/conpty v0.1.0/go.mod h1:rMFsDJoDwVmiYM10aD4bH2XiRgwI7NYJtQgl5yskjEQ=
-github.com/charmbracelet/x/errors v0.0.0-20250520193441-8304e91a28cb h1:YKjUQp9XccPbrTBG0TgOSagng2l67dXFHJJAPxToKpI=
-github.com/charmbracelet/x/errors v0.0.0-20250520193441-8304e91a28cb/go.mod h1:nmnmDtAEAq9i8KHhoYE3SvXMjYPuS219MWbawvAumQ4=
+github.com/charmbracelet/x/errors v0.0.0-20250526211440-a664b62c405f h1:aYX1DhuqpNuswLP9cWZ0VRFfVF+XjLUDm22gmR4rQmE=
+github.com/charmbracelet/x/errors v0.0.0-20250526211440-a664b62c405f/go.mod h1:nmnmDtAEAq9i8KHhoYE3SvXMjYPuS219MWbawvAumQ4=
 github.com/charmbracelet/x/exp/golden v0.0.0-20240806155701-69247e0abc2a h1:G99klV19u0QnhiizODirwVksQB91TJKV/UaTnACcG30=
 github.com/charmbracelet/x/exp/golden v0.0.0-20240806155701-69247e0abc2a/go.mod h1:wDlXFlCrmJ8J+swcL/MnGUuYnqgQdW9rhSD61oNMb6U=
 github.com/charmbracelet/x/term v0.2.1 h1:AQeHeLZ1OqSXhrAWpYUtZyX1T3zVxfpZuEQMIQaGIAQ=
