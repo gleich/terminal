@@ -22,6 +22,7 @@
 			role="button"
 			tabindex="0"
 			onclick={copyCommandToClipboard}
+			style={`cursor: ${copied ? 'default' : 'pointer'}`}
 			onkeypress={(e) => (e.key === 'Enter' || e.key === ' ') && copyCommandToClipboard()}
 			aria-label="Copy SSH command to clipboard"
 			title="Copy SSH command to clipboard"
@@ -97,7 +98,6 @@
 		border-radius: var(--border-radius);
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
-		cursor: pointer;
 	}
 
 	.clipboard-icon,
