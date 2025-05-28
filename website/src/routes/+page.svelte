@@ -102,7 +102,7 @@
 
 	.clipboard-icon,
 	.check-icon {
-		height: 20px;
+		height: 19px;
 		width: auto;
 	}
 
