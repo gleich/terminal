@@ -1,7 +1,6 @@
 package output
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/charmbracelet/ssh"
@@ -15,13 +14,13 @@ func Welcome(s ssh.Session, colors Styles) {
 		50*time.Millisecond,
 		" CONNECTION SUCCESSFULLY ESTABLISHED",
 	)
-	fmt.Fprintln(s)
-	fmt.Fprintln(s)
+	Line(s)
+	Line(s)
 	TypewriterAnimation(
 		s,
 		50*time.Millisecond,
 		colors.Green.Render("Welcome to Matt Gleich's personal terminal."),
 	)
-	fmt.Fprintln(s)
-	fmt.Fprintln(s, Help(colors))
+	Line(s)
+	Line(s, Help(colors))
 }

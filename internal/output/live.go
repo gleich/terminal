@@ -11,13 +11,13 @@ import (
 
 func LiveFrom(s ssh.Session, styles Styles, table string, updated time.Time) {
 	liveStyle := lipgloss.NewStyle().Width(lipgloss.Width(table)).Align(lipgloss.Center)
-	fmt.Fprintln(
+	Line(
 		s,
 		styles.Red.Bold(true).Inherit(liveStyle).Render(
 			"LIVE DATA FROM LCP (https://mattglei.ch/writing/lcp)",
 		),
 	)
-	fmt.Fprintln(
+	Line(
 		s,
 		liveStyle.Render(
 			fmt.Sprintf("[Updated %s]", util.RenderExactFromNow(updated)),

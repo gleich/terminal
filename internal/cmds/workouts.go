@@ -14,12 +14,12 @@ func workouts(s ssh.Session, styles output.Styles, client *lcp.Client) {
 	activities, err := lcp.FetchCache[[]lcp.Workout](client)
 	if err != nil {
 		msg := "failed to load workouts from lcp"
-		fmt.Fprintln(s, styles.Red.Render(msg))
+		output.Line(s, styles.Red.Render(msg))
 		timber.Error(err, msg)
 		return
 	}
 
-	fmt.Fprintln(
+	output.Line(
 		s,
 		"\nOne of my favorite things in the world is staying active and enjoying the outdoors. I grew up in New Hampshire hiking, biking, snowshoeing, and traveling with my family. Out of all of those things I especially love cycling mainly through gravel cycling, road cycling, and mountain biking. Recently I've been getting into lifting which has been a ton of fun. Below are 5 of my most recent Strava and Hevy workouts:",
 	)
@@ -35,38 +35,38 @@ func workouts(s ssh.Session, styles output.Styles, client *lcp.Client) {
 			a.SportType = "Workout"
 		}
 
-		fmt.Fprintln(s)
-		fmt.Fprintf(
+		output.Line(s)
+		output.Linef(
 			s,
 			"%d. %s %s\n",
 			i+1,
 			styles.Green.Bold(true).Render(a.Name),
 			styles.Grey.Render(fmt.Sprintf("[%s]", a.Platform)),
 		)
-		fmt.Fprintf(s, "    Started: %s\n", util.RenderExactFromNow(a.StartDate))
-		fmt.Fprintf(s, "    Duration: %s\n", util.RenderDuration(int(a.MovingTime)))
+		output.Linef(s, "    Started: %s\n", util.RenderExactFromNow(a.StartDate))
+		output.Linef(s, "    Duration: %s\n", util.RenderDuration(int(a.MovingTime)))
 		if a.Platform == "strava" {
-			fmt.Fprintf(s, "    Type: %s\n", a.SportType)
+			output.Linef(s, "    Type: %s\n", a.SportType)
 			if a.Distance != 0 {
-				fmt.Fprintf(
+				output.Linef(
 					s,
 					"    Distance: %s\n",
 					fmt.Sprintf("%.2f mi [%.2f km]", a.Distance*0.000621371, a.Distance*0.001),
 				)
 			}
 			if a.AverageHeartrate != 0 {
-				fmt.Fprintf(
+				output.Linef(
 					s,
 					"    Avg. Heartrate: %s\n",
 					fmt.Sprintf("%.2f bpm", a.AverageHeartrate),
 				)
 			}
 		} else {
-			fmt.Fprintln(s, "    Exercises:")
+			output.Line(s, "    Exercises:")
 			for i, exercise := range a.HevyExercises {
-				fmt.Fprintf(s, "        %s (%d/%d)\n", styles.Blue.Render(exercise.Title), i+1, len(a.HevyExercises))
+				output.Linef(s, "        %s (%d/%d)\n", styles.Blue.Render(exercise.Title), i+1, len(a.HevyExercises))
 				for j, set := range exercise.Sets {
-					fmt.Fprintf(s, "            [set %d] %.1f lbs × %d reps\n", j+1, set.WeightKg*2.2046226218, set.Reps)
+					output.Linef(s, "            [set %d] %.1f lbs × %d reps\n", j+1, set.WeightKg*2.2046226218, set.Reps)
 				}
 			}
 		}

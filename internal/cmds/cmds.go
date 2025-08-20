@@ -1,7 +1,6 @@
 package cmds
 
 import (
-	"fmt"
 	"io"
 	"strings"
 
@@ -19,12 +18,12 @@ func Terminal(s ssh.Session, styles output.Styles, client *lcp.Client) {
 	for {
 		cmd, err := terminal.ReadLine()
 		if err == io.EOF {
-			fmt.Fprintln(s)
+			output.Line(s)
 			return
 		}
 		if err != nil {
 			timber.Error(err, "failed to process command")
-			fmt.Fprintln(s, "processing command failed, closing connection")
+			output.Line(s, "processing command failed, closing connection")
 			return
 		}
 
@@ -33,7 +32,7 @@ func Terminal(s ssh.Session, styles output.Styles, client *lcp.Client) {
 		case "exit":
 			return
 		case "help":
-			fmt.Fprintln(s, output.Help(styles))
+			output.Line(s, output.Help(styles))
 		case "clear", "c":
 			styles.Renderer.Output().ClearScreen()
 		case "about":
@@ -47,7 +46,7 @@ func Terminal(s ssh.Session, styles output.Styles, client *lcp.Client) {
 		case "music":
 			music(s, styles, client)
 		default:
-			fmt.Fprintf(
+			output.Linef(
 				s,
 				"\nInvalid command '%s'. Type 'help' to see available commands.\n\n",
 				cmd,

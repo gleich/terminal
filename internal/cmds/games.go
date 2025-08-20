@@ -18,7 +18,7 @@ func games(s ssh.Session, styles output.Styles, client *lcp.Client) {
 	games, err := lcp.FetchCache[[]lcp.SteamGame](client)
 	if err != nil {
 		msg := "failed to load steam games from lcp"
-		fmt.Fprintln(s, styles.Red.Render(msg))
+		output.Line(s, styles.Red.Render(msg))
 		timber.Error(err, msg)
 		return
 	}
@@ -42,13 +42,14 @@ func games(s ssh.Session, styles output.Styles, client *lcp.Client) {
 		)
 	}
 
-	fmt.Fprintln(
+	output.Line(
 		s,
 		"\nTo relax I love to play games with some of my friends. Below are some of my most recent games from Steam:",
 	)
-	fmt.Fprintln(s)
+
+	output.Line(s)
 	table := output.Table(styles).Headers(headers...).Rows(data...).Render()
-	fmt.Fprintln(s, table)
+	output.Line(s, table)
 	output.LiveFrom(s, styles, table, games.Updated)
-	fmt.Fprintln(s)
+	output.Line(s)
 }
