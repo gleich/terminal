@@ -17,10 +17,11 @@ jobs:
         run: |
           pnpm install
           pnpm run build
-      - run: |
-          echo ${{ secrets.REGISTRY_PASSWORD }} | docker login docker.mattglei.ch -u admin --password-stdin
-          docker build -t docker.mattglei.ch/terminal .
-          docker push docker.mattglei.ch/terminal
+      - uses: docker/login-action@v3
+        with:
+          registry: docker.mattglei.ch
+          username: admin
+          password: ${{ secrets.REGISTRY_PASSWORD }}
       - uses: caprover/deploy-from-github@v1.1.2
         with:
           server: https://lab.mattglei.ch
