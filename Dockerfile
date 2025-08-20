@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM golang:1.24.5 AS build
+FROM golang:1.25.0 AS build
 
 WORKDIR /src
 COPY . .
@@ -10,7 +10,7 @@ FROM alpine:3.20.2
 
 WORKDIR /
 
-RUN apk update && apk add --no-cache ca-certificates=20250619-r0 tzdata=2025b-r0 wget=1.24.5-r0
+RUN apk update && apk add --no-cache ca-certificates=20250619-r0 tzdata=2025b-r0 wget=1.25.0-r0
 
 COPY --from=build /bin/terminal /bin/terminal
 COPY --from=build /src/website/build ./website/build
