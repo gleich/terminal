@@ -12,7 +12,7 @@ require (
 	github.com/joho/godotenv v1.5.1
 	github.com/muesli/termenv v0.16.0
 	go.mattglei.ch/lcp v1.3.0
-	go.mattglei.ch/timber v1.3.1
+	go.mattglei.ch/timber v1.3.2
 	golang.org/x/term v0.34.0
 )
 
