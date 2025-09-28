@@ -26,7 +26,7 @@ func music(s ssh.Session, styles output.Styles, client *lcp.Client) {
 
 	output.Line(s, "\nHere are 5 of my most recently played songs from Apple Music:")
 
-	for i, song := range cacheData.Data.RecentlyPlayed[5:] {
+	for i, song := range cacheData.Data.RecentlyPlayed[:5] {
 		output.Linef(
 			s,
 			"  %d. %s by %s\n",
