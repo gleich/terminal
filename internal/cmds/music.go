@@ -8,7 +8,7 @@ import (
 )
 
 func music(s ssh.Session, styles output.Styles, client *lcp.Client) {
-	cacheData, err := lcp.FetchCache[lcp.AppleMusicCache](client)
+	cacheData, err := lcp.FetchCache[lcp.AppleMusicCacheResponse](client)
 	if err != nil {
 		msg := "failed to load data from apple music cache"
 		output.Line(s, styles.Red.Render(msg))
