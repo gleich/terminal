@@ -1,6 +1,6 @@
 module go.mattglei.ch/terminal
 
-go 1.25.1
+go 1.25.2
 
 require golang.org/x/sys v0.36.0 // indirect
 
