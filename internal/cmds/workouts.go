@@ -66,7 +66,7 @@ func workouts(s ssh.Session, styles output.Styles, client *lcp.Client) {
 			for i, exercise := range a.HevyExercises {
 				output.Linef(s, "        %s (%d/%d)\n", styles.Blue.Render(exercise.Title), i+1, len(a.HevyExercises))
 				for j, set := range exercise.Sets {
-					output.Linef(s, "            [set %d] %.1f lbs × %d reps\n", j+1, set.WeightKg*2.2046226218, set.Reps)
+					output.Linef(s, "            #%d. %.1f lbs × %d reps\n", j+1, set.WeightKg*2.2046226218, set.Reps)
 				}
 			}
 		}
