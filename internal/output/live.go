@@ -14,7 +14,7 @@ func LiveFrom(s ssh.Session, styles Styles, table string, updated time.Time) {
 	Line(
 		s,
 		styles.Red.Bold(true).Inherit(liveStyle).Render(
-			"LIVE DATA FROM LCP (https://mattglei.ch/writing/lcp)",
+			"LIVE DATA FROM LCP (https://mattglei.ch/lcp)",
 		),
 	)
 	Line(
