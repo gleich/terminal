@@ -10,7 +10,7 @@ FROM alpine:3.20.2
 
 WORKDIR /
 
-RUN apk update && apk add --no-cache ca-certificates=20250911-r0 tzdata=2025c-r0
+RUN apk update && apk add --no-cache ca-certificates=20260413-r0 tzdata=2026b-r0
 
 COPY --from=build /bin/terminal /bin/terminal
 COPY --from=build /src/website/build ./website/build
